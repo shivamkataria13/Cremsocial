@@ -226,10 +226,10 @@ export default function ContactPage() {
           <p className="text-gray-700 leading-relaxed mb-6">
             Getting in touch takes only a moment. Use whichever option is easiest for you, and a real person will get back to you. If you prefer, you can request your free audit directly through the form below and we will take it from there.
           </p>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
             {[
               { label: "Email", value: "hello@cremsocial.com", accent: "from-indigo-500 to-violet-500" },
-              { label: "Phone", value: "Coming soon", accent: "from-violet-500 to-fuchsia-500" },
+              { label: "Address", value: "Unit 69, 200 Malta Ave, Brampton, ON L6Y 6H8", accent: "from-violet-500 to-fuchsia-500" },
               { label: "Contact Form", value: "Fill in the form below and we will respond quickly.", accent: "from-fuchsia-500 to-pink-500" },
             ].map((item, i) => (
               <div key={i} className="rounded-2xl border border-indigo-100/60 bg-white/70 p-5">
@@ -238,6 +238,20 @@ export default function ContactPage() {
                 <p className="text-gray-800 text-sm font-medium">{item.value}</p>
               </div>
             ))}
+          </div>
+
+          {/* Map */}
+          <div className="rounded-2xl overflow-hidden border border-indigo-100/60 shadow-md" style={{ height: "340px" }}>
+            <iframe
+              title="Cremsocial Office Location"
+              src="https://maps.google.com/maps?q=200+Malta+Avenue,+Brampton,+ON+L6Y+6H8&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </motion.div>
 
