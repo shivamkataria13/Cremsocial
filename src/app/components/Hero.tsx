@@ -1,170 +1,236 @@
-import { useState, useRef } from "react";
-import { Hero } from "../components/Hero";
-import { Services } from "../components/Services";
-import { ShadowOps } from "../components/ShadowOps";
-import { About } from "../components/About";
-import { Contact } from "../components/Contact";
-import { Meta } from "../components/Meta";
-import { motion, useInView, AnimatePresence } from "motion/react";
-import { ChevronDown } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { motion, useMotionValue, useScroll } from "motion/react";
+import { useEffect, useState, useCallback } from "react";
+import { useLocation, Link } from "react-router";
 
-const faqs = [
-  {
-    q: "What does a digital marketing agency like Cremsocial actually do?",
-    a: "We help local businesses get real leads and help creators earn from their audience, using SEO, paid ads, social media marketing, and Google Business Profile optimization. Everything we do is tied to measurable results like leads, calls, and sales.",
-  },
-  {
-    q: "How is Cremsocial different from other marketing companies?",
-    a: "We focus on revenue, not vanity metrics, and we explain everything in plain English. No jargon, no confusing reports, and no unicorn promises. When you grow, we grow.",
-  },
-  {
-    q: "Do you only work with local businesses?",
-    a: "No. We work with local businesses that want more customers and with creators who want to turn their following into income. Our digital marketing services adapt to your goals.",
-  },
-  {
-    q: "Which marketing services do I actually need?",
-    a: "It depends on your goals, your market, and your budget. The free audit is the easiest way to find out. We review your situation and recommend only what will move the needle for you.",
-  },
-  {
-    q: "Can I use just one service instead of everything?",
-    a: "Yes. Each service works on its own. Many clients start with one, such as SEO or ads, and expand once they see results and want everything coordinated under one roof.",
-  },
-  {
-    q: "How quickly will I see results?",
-    a: "It depends on the service. Ads can bring leads within days, while SEO and social media build over a few months. We set honest expectations up front and report on progress throughout.",
-  },
-  {
-    q: "How do I get started?",
-    a: "The easiest first step is a free audit. We review where your marketing stands, point out the biggest opportunities, and give you a clear plan with no obligation.",
-  },
-];
+export function Hero() {
+  const { scrollY } = useScroll();
+  const location = useLocation();
 
-const homeSchema = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Crem Social",
-    "url": "https://www.cremsocial.com",
-    "logo": "https://www.cremsocial.com/logo.png",
-    "description": "Cremsocial is a digital marketing agency that gets local businesses real leads and helps creators earn. SEO, ads, and social media that works.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Brampton",
-      "addressRegion": "ON",
-      "addressCountry": "CA",
-    },
-    "telephone": "+1-365-866-1643",
-    "openingHours": "Mo-Su 00:00-23:59",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-365-866-1643",
-      "email": "shiv@cremsocial.com",
-      "contactType": "customer service",
-    },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Crem Social",
-    "url": "https://www.cremsocial.com",
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map((f) => ({
-      "@type": "Question",
-      "name": f.q,
-      "acceptedAnswer": { "@type": "Answer", "text": f.a },
-    })),
-  },
-];
+  // Use manually-controlled motion values so we can guarantee initial state
+  const opacity = useMotionValue(1);
+  const y = useMotionValue(0);
 
-function HomeFAQ() {
-  const [open, setOpen] = useState<number | null>(null);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  // Recalculate transforms from scroll position
+  const updateTransforms = useCallback((scrollVal: number) => {
+    // Opacity: 1 when scroll <= 50, fades to 0 at scroll 300
+    if (scrollVal <= 50) {
+      opacity.set(1);
+    } else if (scrollVal >= 300) {
+      opacity.set(0);
+    } else {
+      opacity.set(1 - (scrollVal - 50) / 250);
+    }
+    // Parallax Y: 0 at scroll 0, 150 at scroll 500
+    const yVal = Math.min(scrollVal * 0.3, 150);
+    y.set(yVal);
+  }, [opacity, y]);
+
+  // On mount and on every navigation to this page, reset to visible
+  useEffect(() => {
+    // Force scroll to top immediately
+    window.scrollTo(0, 0);
+    // Ensure motion values are reset to fully visible
+    opacity.set(1);
+    y.set(0);
+  }, [location.pathname, opacity, y]);
+
+  // Subscribe to scroll changes and update transforms
+  useEffect(() => {
+    const unsubscribe = scrollY.on('change', (latest) => {
+      updateTransforms(latest);
+    });
+    return unsubscribe;
+  }, [scrollY, updateTransforms]);
+
+  const [startReveal, setStartReveal] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem("introShown") === "true";
+    }
+    return false;
+  });
+  
+  const [showHeadline, setShowHeadline] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem("introShown") === "true";
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    // Safety check: ensure state matches storage on mount
+    const hasIntroRun = sessionStorage.getItem("introShown") === "true";
+    if (hasIntroRun) {
+      setStartReveal(true);
+      setShowHeadline(true);
+    }
+    
+    if (!hasIntroRun) {
+      // Wait for the intro to complete (Bloom phase)
+      const handleIntroComplete = () => {
+        // Start animating the surrounding content
+        setStartReveal(true);
+        // Show the headline IMMEDIATELY to swap with Preloader text
+        setShowHeadline(true);
+      };
+      
+      window.addEventListener("intro-complete", handleIntroComplete);
+      return () => window.removeEventListener("intro-complete", handleIntroComplete);
+    }
+  }, []);
+
+  // Animation variants for the surrounding content (reveal after preloader)
+  const contentVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: { 
+        duration: 0.8,
+        ease: "easeOut",
+        staggerChildren: 0.1
+      }
+    }
+  };
+  
+  const starVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1, 
+      opacity: 1,
+      transition: { type: "spring", stiffness: 200, damping: 10, delay: 0.2 }
+    }
+  };
 
   return (
-    <section ref={ref} className="relative py-24 px-6">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center px-6 overflow-hidden pt-16 md:pt-0 pb-20">
+      <motion.div 
+        className="max-w-5xl w-full relative z-10 flex flex-col items-center mt-[-60px]"
+        style={{ y, opacity }}
+      >
+        <motion.div 
+          className="flex items-center justify-center gap-2 mb-4"
+          initial="hidden"
+          animate={startReveal ? "visible" : "hidden"}
+          variants={starVariants}
         >
-          <div className="w-16 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full mx-auto mb-4" />
-          <h2
-            className="text-4xl md:text-5xl text-gray-900 tracking-tight"
-            style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
+          <motion.div
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
-            COMMON{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600">
-              QUESTIONS
-            </span>
-          </h2>
+            <Sparkles className="w-5 h-5 text-purple-600" />
+          </motion.div>
         </motion.div>
+        
+        {/* 
+           Static Headline - Structure MUST MATCH Preloader EXACTLY
+           Preloader uses a flex-col container with two divs.
+        */}
+        <div className={`flex flex-col items-center relative z-20 mb-8 w-full transition-opacity duration-0 ${showHeadline ? 'opacity-100' : 'opacity-0'}`}>
+           <div className="overflow-hidden">
+             <h1 
+               className="text-4xl md:text-6xl lg:text-7xl text-gray-900 tracking-tight leading-tight text-center"
+               style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700 }}
+             >
+               MARKETING THAT
+             </h1>
+           </div>
 
-        <div className="space-y-3">
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="rounded-2xl border border-gray-200/70 bg-white/80 backdrop-blur-sm overflow-hidden"
-            >
-              <button
-                className="w-full flex items-center justify-between px-6 py-5 text-left"
-                onClick={() => setOpen(open === i ? null : i)}
+           <div className="overflow-hidden">
+              <h1 
+                className="text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight text-center"
+                style={{ 
+                  fontFamily: 'Oswald, sans-serif', 
+                  fontWeight: 700,
+                }}
               >
-                <span
-                  className="text-gray-900 text-base pr-4"
-                  style={{ fontFamily: "Oswald, sans-serif", fontWeight: 600 }}
-                >
-                  {faq.q}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600">
+                  ACTUALLY WORKS
                 </span>
-                <ChevronDown
-                  className={`w-5 h-5 text-indigo-500 flex-shrink-0 transition-transform duration-300 ${open === i ? "rotate-180" : ""}`}
-                />
-              </button>
-              <AnimatePresence>
-                {open === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <p className="px-6 pb-5 text-gray-700 leading-relaxed border-t border-gray-100 pt-3">
-                      {faq.a}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+              </h1>
+           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+        
+        <motion.div
+          initial="hidden"
+          animate={startReveal ? "visible" : "hidden"}
+          variants={contentVariants}
+          className="flex flex-col items-center w-full"
+        >
+          <motion.p 
+            variants={contentVariants}
+            className="text-xl md:text-2xl mb-8 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 text-center"
+            style={{ fontFamily: 'Playfair Display, serif', fontStyle: 'italic' }}
+          >
+            (No Unicorn Promises)
+          </motion.p>
+          
+          <motion.p 
+            variants={contentVariants}
+            className="text-base md:text-lg text-gray-800 max-w-3xl mx-auto mb-8 leading-relaxed text-center"
+          >
+            We help local businesses get real leads and creators turn followers into income—using SEO, ads, and shadow operating. No fluff, no mystery, just numbers that make sense.
+          </motion.p>
 
-export function Home() {
-  return (
-    <>
-      <Meta
-        title="Digital Marketing Agency for Local Businesses & Creators | Cremsocial"
-        description="Cremsocial is a digital marketing agency that gets local businesses real leads and helps creators earn. SEO, ads, and social media that works. Get your free audit."
-        canonical="https://www.cremsocial.com/"
-        schema={homeSchema}
-      />
-      <Hero />
-      <Services />
-      <ShadowOps />
-      <About />
-      <HomeFAQ />
-      <Contact />
-    </>
+          <motion.div 
+            variants={contentVariants}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-6"
+          >
+            <Link to="/contact">
+              <motion.button 
+                className="group px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white transition-all duration-300 shadow-lg shadow-indigo-500/30 flex items-center justify-center gap-2 cursor-pointer"
+                whileHover={{ 
+                  scale: 1.05, 
+                  boxShadow: "0 20px 40px -12px rgba(99, 102, 241, 0.5)",
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 500 }} className="tracking-wide text-sm">
+                  Skip the BS, Get My Free Audit
+                </span>
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </motion.div>
+              </motion.button>
+            </Link>
+
+            <motion.a
+              href="#services"
+              className="px-6 py-3 rounded-full glass-card-matte text-gray-900 font-medium flex items-center justify-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 500 }} className="tracking-wide text-sm">
+                See What We Can Do for You
+              </span>
+            </motion.a>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div 
+        className="absolute bottom-6 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-5 h-8 border-2 border-indigo-400 rounded-full flex justify-center pt-1.5"
+        >
+          <motion.div 
+            className="w-1 h-1 bg-indigo-500 rounded-full"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </motion.div>
+      </motion.div>
+    </section>
   );
 }
