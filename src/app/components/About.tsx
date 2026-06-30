@@ -1,6 +1,7 @@
-import { Users, Zap, MessageCircle } from "lucide-react";
+import { Users, Zap, MessageCircle, ArrowRight } from "lucide-react";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import { Link } from "react-router";
 
 export function About() {
   const ref = useRef(null);
@@ -114,18 +115,29 @@ export function About() {
                   No fluff. No ghosting. No guessing.
                 </motion.p>
                 
-                <motion.div 
+                <motion.div
                   className="text-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 1 }}
                 >
-                  <p 
-                    className="text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600"
+                  <p
+                    className="text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 mb-10"
                     style={{ fontFamily: 'Playfair Display, serif', fontStyle: 'italic' }}
                   >
                     Your growth partner. Not another marketing mystery.
                   </p>
+                  <Link to="/about">
+                    <motion.button
+                      whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -12px rgba(99, 102, 241, 0.4)" }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 text-white shadow-lg shadow-indigo-500/30"
+                      style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600 }}
+                    >
+                      THE FULL STORY
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.button>
+                  </Link>
                 </motion.div>
               </div>
             </div>
