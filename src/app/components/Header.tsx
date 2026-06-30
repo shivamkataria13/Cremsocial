@@ -57,7 +57,7 @@ export function Header() {
 
   const menuItems = [
     { name: 'Services', type: 'dropdown' },
-    { name: 'Shadow Ops', path: '/shadow-operating' },
+    // { name: 'Shadow Ops', path: '/shadow-operating' },
     { name: 'About', path: '/about' },
     { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' },
