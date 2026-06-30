@@ -3,6 +3,7 @@ import { Hero } from "../components/Hero";
 import { Services } from "../components/Services";
 import { ShadowOps } from "../components/ShadowOps";
 import { About } from "../components/About";
+import { Testimonials } from "../components/Testimonials";
 import { Contact } from "../components/Contact";
 import { Meta } from "../components/Meta";
 import { motion, useInView, AnimatePresence } from "motion/react";
@@ -653,6 +654,7 @@ export function Home() {
       <HomeWhyUs />
       <ShadowOps />
       <About />
+      <Testimonials />
       <HomeQuickForm />
       <HomeFAQ />
       <Contact />
