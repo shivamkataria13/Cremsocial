@@ -1,6 +1,7 @@
-import { Search, Target, MessageSquare, Globe } from "lucide-react";
+import { Search, Target, MessageSquare, Globe, ArrowRight } from "lucide-react";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import { Link } from "react-router";
 
 const services = [
   {
@@ -15,7 +16,9 @@ const services = [
       "Add tracking so you can see which searches, pages, and locations drive calls or forms"
     ],
     tagline: 'No mystical "SEO secrets." We show you exactly what we\'re changing and what it\'s supposed to do.',
-    gradient: "from-purple-500 to-blue-500"
+    gradient: "from-purple-500 to-blue-500",
+    path: "/seo",
+    ctaLabel: "Learn About Our SEO Services",
   },
   {
     icon: Target,
@@ -29,7 +32,9 @@ const services = [
       "Send you reports you don't need a PhD to decode: what we spent, what came back, and what's next"
     ],
     tagline: "We run Meta (FB/IG) and Google ads with one simple rule: if it can't justify its cost, it doesn't run.",
-    gradient: "from-blue-500 to-cyan-500"
+    gradient: "from-blue-500 to-cyan-500",
+    path: "/ads",
+    ctaLabel: "Learn About Our Ads Services",
   },
   {
     icon: MessageSquare,
@@ -43,7 +48,9 @@ const services = [
       "Focus on actions (clicks, replies, DMs, link taps), not just likes"
     ],
     tagline: "We make social media a lead and trust machine, not a second full-time job.",
-    gradient: "from-pink-500 to-orange-500"
+    gradient: "from-pink-500 to-orange-500",
+    path: "/social-media",
+    ctaLabel: "Learn About Social Media Management",
   },
   {
     icon: Globe,
@@ -57,7 +64,9 @@ const services = [
       "Built-in forms, booking links, and tracking so every visit is an opportunity, not a mystery"
     ],
     tagline: 'We don\'t just "make it look nice." We build it to convert.',
-    gradient: "from-cyan-500 to-purple-500"
+    gradient: "from-cyan-500 to-purple-500",
+    path: "/contact",
+    ctaLabel: "Talk to Us About Your Website",
   }
 ];
 
@@ -120,10 +129,10 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ y: -8 }}
-      className="group relative p-8 rounded-3xl glass-card-matte overflow-hidden cursor-pointer"
+      className="group relative p-8 rounded-3xl glass-card-matte overflow-hidden cursor-pointer flex flex-col"
     >
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col flex-1">
         <motion.div 
           className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} bg-opacity-10 flex items-center justify-center mb-6 shadow-lg`}
           whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
@@ -164,9 +173,21 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
           ))}
         </ul>
 
-        <p className="text-gray-600 text-xs italic" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
+        <p className="text-gray-600 text-xs italic mb-5" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
           {service.tagline}
         </p>
+
+        <Link to={service.path} className="mt-auto block">
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r ${service.gradient} text-white text-sm shadow-md`}
+            style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 500 }}
+          >
+            {service.ctaLabel}
+            <ArrowRight className="w-4 h-4" />
+          </motion.button>
+        </Link>
       </div>
 
       {/* Corner accent */}
