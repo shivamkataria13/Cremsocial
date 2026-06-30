@@ -5,36 +5,36 @@ import { ChevronDown, Send, CheckCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "How long do SEO services take to show results?",
-    answer: "SEO is a long term strategy, not an overnight fix. Most small businesses begin to see meaningful movement within three to six months, with results compounding the longer you invest. We share regular reports so you always know what progress is being made."
+    question: "What is a Google Business Profile and why do I need one?",
+    answer: "It is your free business listing that appears in Google Search and Maps, showing your hours, reviews, photos, and location. It is often the first thing local customers see, which makes Google Business Profile optimization essential for getting found and chosen."
   },
   {
-    question: "What is the difference between local SEO and regular SEO?",
-    answer: "Local SEO services focus on getting your business found by nearby customers, including in Google Maps and the local results pack. Regular search engine optimization targets broader visibility. For most small businesses, local SEO drives the fastest and most valuable wins."
+    question: "How do I rank higher in the Google Maps results?",
+    answer: "Google maps seo depends on factors like the completeness and consistency of your information, your categories, your reviews, and your activity. Our gmb seo services optimize all of these to help you appear higher in local searches."
   },
   {
-    question: "Are your SEO services affordable for a small business?",
-    answer: "Yes. Our affordable SEO services are built to deliver a real return without wasted spend. We focus on the work that actually moves your rankings and revenue, with clear pricing and no long list of busywork."
+    question: "Do you offer Google Business Profile setup for a new business?",
+    answer: "Yes. We handle full Google Business Profile setup for new businesses and cleanup for existing ones, making sure every detail is accurate and optimized from the start."
   },
   {
-    question: "Do you offer SEO for contractors and service businesses?",
-    answer: "Yes. We have strong experience with SEO for contractors and local service businesses, where local SEO and a well optimized Google presence often produce quick, meaningful results."
+    question: "How important are reviews for my profile?",
+    answer: "Very important. Reviews influence both how customers perceive you and how you rank locally. A steady flow of genuine reviews, handled well, is one of the strongest things you can do for your profile."
   },
   {
-    question: "What does technical SEO include?",
-    answer: "Our technical SEO services cover site speed, mobile friendliness, crawlability, broken links, and the behind the scenes issues that hold rankings back. A strong technical foundation makes every other SEO effort work harder."
+    question: "How is this different from regular local SEO services?",
+    answer: "Google Business Profile management focuses on your listing, while broader local SEO services cover your whole local presence. As a local SEO company, we connect both so your website and profile reinforce each other."
   },
   {
-    question: "Do you guarantee first page rankings?",
-    answer: "No honest SEO company can guarantee a specific ranking, because search engines control the results. What we guarantee is a clear strategy, transparent reporting, and steady, measurable progress toward more visibility and more leads."
+    question: "Can you fix a profile that is suspended or has wrong information?",
+    answer: "Yes. We help correct inaccurate details, clean up inconsistencies, and work through profile issues so your listing is accurate and trusted again."
   },
   {
-    question: "Can you fix SEO another agency messed up?",
-    answer: "Yes. We often start by auditing past work, cleaning up technical issues, and removing anything holding you back, then rebuilding on a solid foundation."
+    question: "How long until I see results from profile optimization?",
+    answer: "Local visibility builds steadily over weeks and months. Some improvements show up quickly, while the biggest gains come from consistency, especially with reviews and regular activity."
   },
   {
-    question: "Will I work with a real SEO specialist?",
-    answer: "Yes. You get a dedicated SEO specialist and consultant who knows your business and focuses on the work that actually drives results, not a faceless account that sends automated reports."
+    question: "Do I need a website to benefit from a Google Business Profile?",
+    answer: "No. Many customers call or visit directly from your profile without ever opening a website. That said, a profile and a website work even better together."
   }
 ];
 
@@ -42,10 +42,10 @@ const schema = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "SEO Services",
-    "description": "Affordable SEO services that bring real leads. Cremsocial is an SEO agency offering local SEO, technical SEO, and search engine optimization services for small businesses.",
+    "name": "Google Business Profile Optimization",
+    "description": "Get found on Google Maps with expert Google Business Profile optimization. Cremsocial offers local SEO services and GMB setup that bring calls, visits, and customers.",
     "provider": { "@type": "Organization", "name": "Crem Social", "url": "https://www.cremsocial.com" },
-    "url": "https://www.cremsocial.com/seo",
+    "url": "https://www.cremsocial.com/google-business",
     "areaServed": "CA"
   },
   {
@@ -59,47 +59,47 @@ const schema = [
   }
 ];
 
-const seoServices = [
+const gbpServices = [
   {
-    title: "Technical SEO Services",
-    body: "Before anything else, our technical SEO services make sure your website is fast, mobile friendly, and easy for search engines to read. We fix broken links, slow pages, crawl errors, and the issues that quietly hold your rankings back. A strong foundation makes every other effort work harder.",
+    title: "Profile Setup and Cleanup",
+    body: "Whether you need a fresh Google Business Profile setup or a cleanup of an existing one, we make sure every detail is filled in correctly: your name, categories, services, hours, service areas, and contact information. Search engines reward complete, consistent profiles, and customers trust them more.",
     accent: "from-indigo-500 to-violet-500"
   },
   {
-    title: "Keyword and Market Research",
-    body: "We find the exact phrases your customers are typing, including the local, high intent searches that lead to real business. We focus on terms that bring buyers, not just browsers, so your traffic actually converts.",
+    title: "Local Ranking and Google Maps SEO",
+    body: "Our google my business seo and gmb seo services optimize the signals that influence where you appear in the local map pack, including categories, descriptions, and the consistency of your information across the web. The higher you rank in local search engine optimization, the more customers find you first.",
     accent: "from-violet-500 to-fuchsia-500"
   },
   {
-    title: "On Page and Website SEO Services",
-    body: "Our website SEO services optimize your titles, headings, content, and structure so both people and search engines understand what you offer. Clear, helpful pages rank better and convert better, and we build them with both goals in mind.",
+    title: "Photos and Posts That Convert",
+    body: "Profiles with strong photos and regular posts get more attention and more clicks. We help you present your business in its best light and keep the profile active, which signals to Google that you are open and engaged.",
     accent: "from-fuchsia-500 to-pink-500"
   },
   {
-    title: "Local SEO Services",
-    body: "For local businesses, showing up in the map pack and local results is everything. Our local SEO services optimize your local signals, citations, and on page details so you appear when nearby customers search. This is often where the fastest wins happen, especially for SEO for contractors and other service businesses.",
+    title: "Review Strategy and Management",
+    body: "Reviews are one of the biggest factors in whether someone chooses you. We help you build a steady flow of genuine reviews and respond to them properly, which boosts both trust and ranking.",
     accent: "from-indigo-500 to-blue-500"
   },
   {
-    title: "Organic SEO and Content",
-    body: "Search engines reward useful content. Our organic SEO services help you publish pages and articles that answer real customer questions, build authority in your niche, and pull in steady traffic month after month.",
+    title: "Part of a Bigger Local SEO Picture",
+    body: "Your profile works best alongside the rest of your local presence. As a local SEO agency, we connect your Google Business Profile management with broader local SEO services, so your website, your listings, and your profile all reinforce each other. This combined approach is how small businesses dominate their local market.",
     accent: "from-blue-500 to-indigo-500"
   },
   {
-    title: "Monthly Reporting",
-    body: "Every report focuses on rankings for the keywords that drive revenue, growth in qualified traffic, and the leads and calls that follow. No confusing dashboards, no inflated numbers — just the data that tells you what is working.",
+    title: "Tracking the Results",
+    body: "We track the calls, direction requests, and clicks your profile generates, so you can see the real impact. This is about leads and customers, not just a tidy looking listing.",
     accent: "from-violet-500 to-indigo-500"
   }
 ];
 
 const scrollToForm = () => {
-  document.getElementById("seo-audit-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  document.getElementById("gbp-audit-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-export default function SEOPage() {
+export default function GoogleBusinessProfilePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", business: "", website: "", situation: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", business: "", address: "", situation: "", message: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -121,9 +121,9 @@ export default function SEOPage() {
   return (
     <>
       <Meta
-        title="SEO Services & Local SEO for Small Businesses | Cremsocial"
-        description="Affordable SEO services that bring real leads. Cremsocial is an SEO agency offering local SEO, technical SEO, and search engine optimization services for small businesses."
-        canonical="https://www.cremsocial.com/seo"
+        title="Google Business Profile Optimization & Management | Cremsocial"
+        description="Get found on Google Maps with expert Google Business Profile optimization. Cremsocial offers local SEO services and GMB setup that bring calls, visits, and customers."
+        canonical="https://www.cremsocial.com/google-business"
         schema={schema}
       />
       <div className="max-w-7xl mx-auto py-16 px-6">
@@ -134,7 +134,7 @@ export default function SEOPage() {
             className="px-4 py-2 rounded-full bg-indigo-100 border border-indigo-300 text-indigo-700 text-sm"
             style={{ fontFamily: "Oswald, sans-serif", fontWeight: 600 }}
           >
-            SEO SERVICES
+            GOOGLE BUSINESS PROFILE
           </div>
         </motion.div>
 
@@ -145,9 +145,9 @@ export default function SEOPage() {
           style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
         >
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600">
-            SEO That Brings You Customers,
+            Get Found
           </span>{" "}
-          Not Just Clicks
+          When Local Customers Search
         </motion.h1>
 
         <motion.p
@@ -155,7 +155,7 @@ export default function SEOPage() {
           className="text-center text-lg mb-10"
           style={{ fontFamily: "Playfair Display, serif", fontStyle: "italic", color: "#6366f1" }}
         >
-          No unicorn promises. Just steady, measurable results.
+          More calls, more visits, more customers.
         </motion.p>
 
         {/* CTA 1 */}
@@ -167,10 +167,10 @@ export default function SEOPage() {
             className="text-2xl md:text-3xl mb-3 tracking-tight"
             style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
           >
-            See Where You Rank Today
+            See How Your Profile Stacks Up
           </h2>
           <p className="text-white/85 mb-6 max-w-xl mx-auto">
-            Find out exactly how your business shows up in search and what is holding you back. Get a free, no pressure SEO audit and a clear plan to fix it.
+            Find out how your Google Business Profile compares to your local competitors and what is costing you customers. Get a free audit today.
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -194,16 +194,16 @@ export default function SEOPage() {
               className="text-2xl md:text-3xl text-gray-900 tracking-tight"
               style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
             >
-              SEO That Brings You Customers,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Not Just Clicks</span>
+              Get Found When{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Local Customers Search</span>
             </h2>
           </div>
           <p className="text-gray-700 leading-relaxed">
-            Most SEO promises sound the same. Page one rankings, more traffic, big results, no real numbers. We do it differently. As an SEO agency, our focus is one thing: getting your business in front of people who are ready to buy, and turning those searches into actual leads. Our SEO services are built for local businesses that want growth they can measure, not vanity reports. No unicorn promises, just steady results from a professional SEO company that tells you the truth.
+            When someone nearby searches for what you offer, your Google Business Profile is often the first thing they see, before they ever reach your website. It shows your reviews, your hours, your photos, and your location, and it decides whether they call you or your competitor. With expert Google Business Profile optimization, Cremsocial turns that profile into one of your strongest sources of local leads. No fluff, just more calls, more visits, and more customers.
           </p>
         </motion.div>
 
-        {/* Why SEO Matters */}
+        {/* Why Your Profile Matters */}
         <motion.div
           {...fade(0.18)}
           className="mb-8 rounded-3xl border border-violet-200/60 bg-gradient-to-br from-white/80 via-violet-50/40 to-fuchsia-50/40 backdrop-blur-sm p-8 md:p-10"
@@ -214,28 +214,55 @@ export default function SEOPage() {
               className="text-2xl md:text-3xl text-gray-900 tracking-tight"
               style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
             >
-              Why SEO Matters for{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">Small Businesses</span>
+              Why Your Google Business Profile{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">Matters So Much</span>
             </h2>
           </div>
           <p className="text-gray-700 leading-relaxed mb-4">
-            When someone needs a plumber, a dentist, a contractor, or a coffee shop, they search. They open Google, type what they want, and pick from the first few results. If your business is not there, you are invisible to the exact people looking for you. That is the gap our search engine optimization services close. Good SEO for small businesses puts your name in front of buyers at the moment they are deciding, which is the most valuable moment there is.
+            Think about how you find a local business. You search, you glance at the map results, you check the reviews and photos, and you pick. That entire decision often happens before anyone visits a website. Your Google Business Profile is the storefront for that moment, and if it is incomplete, outdated, or poorly optimized, you lose customers without ever knowing it.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            The best part is that SEO keeps working. Unlike an ad that stops the second you stop paying, a strong organic presence compounds over time. Every month your foundation gets stronger, your rankings get steadier, and your cost per lead drops. For small businesses, this makes professional SEO services one of the smartest long term investments you can make.
+            A strong profile does the opposite. Done with proper google maps seo, it builds instant trust, answers the questions customers care about, and pushes you up in the local map results where the most valuable searches happen. For many local businesses, an optimized profile is the single highest return marketing asset they own, and it is often the most neglected.
           </p>
+        </motion.div>
+
+        {/* CTA 2 */}
+        <motion.div
+          {...fade(0.2)}
+          className="mb-10 rounded-3xl border border-indigo-200/60 bg-gradient-to-br from-indigo-50/80 via-violet-50/60 to-white/80 backdrop-blur-sm p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <div>
+            <h3
+              className="text-xl md:text-2xl text-gray-900 tracking-tight mb-1"
+              style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
+            >
+              Show Up When It Counts
+            </h3>
+            <p className="text-gray-600">
+              Be the business local customers find first. Let our google maps seo bring you more calls and visits.
+            </p>
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={scrollToForm}
+            className="flex-shrink-0 px-8 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/30 whitespace-nowrap cursor-pointer"
+            style={{ fontFamily: "Oswald, sans-serif", fontWeight: 500 }}
+          >
+            See What We Can Do for You
+          </motion.button>
         </motion.div>
 
         {/* Stats Bar */}
         <motion.div
-          {...fade(0.2)}
+          {...fade(0.22)}
           className="mb-10 p-8 bg-gradient-to-r from-indigo-50 via-violet-50 to-fuchsia-50 rounded-2xl border border-indigo-200/50"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             {[
-              { stat: "50+", label: "Small Businesses Served", color: "text-indigo-600" },
-              { stat: "3x", label: "Average Traffic Growth", color: "text-violet-600" },
-              { stat: "Top 3", label: "Google Rankings Achieved", color: "text-fuchsia-600" },
+              { stat: "50+", label: "Profiles Optimized", color: "text-indigo-600" },
+              { stat: "2x", label: "Average Profile Views", color: "text-violet-600" },
+              { stat: "More", label: "Calls, Walk-ins, Customers", color: "text-fuchsia-600" },
             ].map((s, i) => (
               <div key={i}>
                 <div className={`text-3xl md:text-4xl font-bold mb-2 ${s.color}`} style={{ fontFamily: "Oswald, sans-serif" }}>
@@ -247,8 +274,8 @@ export default function SEOPage() {
           </div>
         </motion.div>
 
-        {/* Our SEO Services */}
-        <motion.div {...fade(0.22)} className="mb-3">
+        {/* Our GBP Management Services */}
+        <motion.div {...fade(0.24)} className="mb-10">
           <div className="text-center mb-8">
             <div className="w-16 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full mx-auto mb-4" />
             <h2
@@ -257,21 +284,21 @@ export default function SEOPage() {
             >
               OUR{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600">
-                SEO SERVICES
+                GOOGLE BUSINESS PROFILE MANAGEMENT
               </span>
             </h2>
             <p className="text-gray-600 mt-3 max-w-xl mx-auto">
-              We do not chase trends or hide behind jargon. As your SEO consultant and partner, we follow a clear process built to produce numbers that make sense.
+              Everything we do is focused on one outcome: putting your business in front of ready-to-buy local customers.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6 mb-10">
-            {seoServices.map((s, i) => (
+          <div className="grid md:grid-cols-2 gap-6">
+            {gbpServices.map((s, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.24 + i * 0.07 }}
-                className="rounded-2xl border border-indigo-100/60 bg-white/70 backdrop-blur-sm p-6 group hover:border-indigo-300/60 transition-colors"
+                transition={{ duration: 0.5, delay: 0.26 + i * 0.07 }}
+                className="rounded-2xl border border-indigo-100/60 bg-white/70 backdrop-blur-sm p-6 hover:border-indigo-300/60 transition-colors"
               >
                 <div className={`w-1 h-6 rounded-full bg-gradient-to-b ${s.accent} mb-3`} />
                 <h3
@@ -286,83 +313,9 @@ export default function SEOPage() {
           </div>
         </motion.div>
 
-        {/* CTA 2 */}
-        <motion.div
-          {...fade(0.3)}
-          className="mb-10 rounded-3xl border border-indigo-200/60 bg-gradient-to-br from-indigo-50/80 via-violet-50/60 to-white/80 backdrop-blur-sm p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6"
-        >
-          <div>
-            <h3
-              className="text-xl md:text-2xl text-gray-900 tracking-tight mb-1"
-              style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
-            >
-              Turn Searches Into Customers
-            </h3>
-            <p className="text-gray-600">
-              Your next customer is searching right now. Let our SEO services make sure they find you instead of your competitor.
-            </p>
-          </div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={scrollToForm}
-            className="flex-shrink-0 px-8 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/30 whitespace-nowrap cursor-pointer"
-            style={{ fontFamily: "Oswald, sans-serif", fontWeight: 500 }}
-          >
-            See What We Can Do for You
-          </motion.button>
-        </motion.div>
-
-        {/* Affordable SEO */}
-        <motion.div
-          {...fade(0.32)}
-          className="mb-8 rounded-3xl border border-indigo-200/60 bg-gradient-to-br from-white/80 via-indigo-50/40 to-violet-50/40 backdrop-blur-sm p-8 md:p-10"
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-1 h-8 flex-shrink-0 rounded-full bg-gradient-to-b from-indigo-500 to-violet-500" />
-            <h2
-              className="text-2xl md:text-3xl text-gray-900 tracking-tight"
-              style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
-            >
-              Affordable SEO Services{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">That Pay Off</span>
-            </h2>
-          </div>
-          <p className="text-gray-700 leading-relaxed">
-            We believe professional SEO services should be within reach for small businesses, not just big budgets. Our affordable SEO services are built to deliver a real return, with clear pricing and no wasted spend. You get a dedicated SEO specialist focused on the work that actually moves your rankings and your revenue, not a long list of busywork. As your SEO company, we treat your budget like our own and only invest in what produces results.
-          </p>
-        </motion.div>
-
-        {/* CTA 3 */}
-        <motion.div
-          {...fade(0.34)}
-          className="mb-10 rounded-3xl border border-indigo-200/60 bg-gradient-to-br from-indigo-50/80 via-violet-50/60 to-white/80 backdrop-blur-sm p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6"
-        >
-          <div>
-            <h3
-              className="text-xl md:text-2xl text-gray-900 tracking-tight mb-1"
-              style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
-            >
-              Get Affordable SEO That Works
-            </h3>
-            <p className="text-gray-600">
-              No jargon, no vanity metrics, just professional SEO services that bring real leads. Book a call with our SEO consultant.
-            </p>
-          </div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={scrollToForm}
-            className="flex-shrink-0 px-8 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/30 whitespace-nowrap cursor-pointer"
-            style={{ fontFamily: "Oswald, sans-serif", fontWeight: 500 }}
-          >
-            Book a Free Consultation
-          </motion.button>
-        </motion.div>
-
         {/* What You Can Expect */}
         <motion.div
-          {...fade(0.36)}
+          {...fade(0.42)}
           className="mb-8 rounded-3xl border border-violet-200/60 bg-gradient-to-br from-white/80 via-violet-50/40 to-fuchsia-50/40 backdrop-blur-sm p-8 md:p-10"
         >
           <div className="flex items-center gap-3 mb-4">
@@ -376,16 +329,43 @@ export default function SEOPage() {
             </h2>
           </div>
           <p className="text-gray-700 leading-relaxed mb-4">
-            We believe in honesty over hype. SEO is not instant, and anyone who promises overnight results is selling you a fantasy. What we promise instead is a clear plan, regular reporting, and steady progress you can measure. Most clients start seeing meaningful movement within the first few months, with momentum building from there.
+            You can expect a profile that works for you instead of just sitting there. As we optimize, you should see more visibility in local searches, more interactions with your listing, and more of the calls and visits that turn into business. We report on the actions that matter, so you always know what your profile is producing.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            Every report focuses on rankings for the keywords that drive revenue, growth in qualified traffic, and the leads and calls that follow. You will never get a confusing dashboard with inflated numbers — just the data that tells you what is working and what is next.
+            We are also honest about timelines, since some of the biggest gains come from consistency over time, especially with reviews and regular activity. As a local SEO agency, we keep your profile active, accurate, and optimized — not just set it and forget it.
           </p>
+        </motion.div>
+
+        {/* CTA 3 */}
+        <motion.div
+          {...fade(0.44)}
+          className="mb-10 rounded-3xl border border-indigo-200/60 bg-gradient-to-br from-indigo-50/80 via-violet-50/60 to-white/80 backdrop-blur-sm p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <div>
+            <h3
+              className="text-xl md:text-2xl text-gray-900 tracking-tight mb-1"
+              style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
+            >
+              More Reviews, More Customers
+            </h3>
+            <p className="text-gray-600">
+              A steady flow of genuine reviews builds trust and rankings. Book a call and we will set up a review strategy that works.
+            </p>
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={scrollToForm}
+            className="flex-shrink-0 px-8 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/30 whitespace-nowrap cursor-pointer"
+            style={{ fontFamily: "Oswald, sans-serif", fontWeight: 500 }}
+          >
+            Book a Free Consultation
+          </motion.button>
         </motion.div>
 
         {/* Why Choose Cremsocial */}
         <motion.div
-          {...fade(0.38)}
+          {...fade(0.46)}
           className="mb-8 rounded-3xl border border-indigo-200/60 bg-gradient-to-br from-white/80 via-indigo-50/40 to-violet-50/40 backdrop-blur-sm p-8 md:p-10"
         >
           <div className="flex items-center gap-3 mb-4">
@@ -395,30 +375,30 @@ export default function SEOPage() {
               style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
             >
               Why Choose Cremsocial as Your{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">SEO Company</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Local SEO Company</span>
             </h2>
           </div>
           <p className="text-gray-700 leading-relaxed">
-            We work with small businesses that are tired of SEO companies that overpromise and underdeliver. We keep things plain spoken, we show our work, and we treat your budget like it is our own. As your SEO consultant, we are motivated to bring you results that move your business forward, because when you grow, we grow. That is what makes us one of the best SEO agency options for businesses that want honesty and outcomes, not vanity metrics and mystery.
+            We treat your profile like the lead generating asset it is. We keep it accurate, active, and optimized, and we focus on the outcomes that matter to a local business: calls, visits, and customers. No vanity metrics, no mystery, just a profile that quietly brings in business while you focus on running it. As a local SEO company that connects profile management to your broader local presence, we make sure everything works together.
           </p>
         </motion.div>
 
         {/* Conclusion */}
         <motion.div
-          {...fade(0.4)}
+          {...fade(0.48)}
           className="mb-10 rounded-3xl border border-indigo-100/60 bg-white/70 backdrop-blur-sm p-8 md:p-10"
         >
           <p
             className="text-gray-700 leading-relaxed text-lg"
             style={{ fontFamily: "Playfair Display, serif", fontStyle: "italic" }}
           >
-            SEO done right is one of the smartest long term investments a small business can make. It puts you in front of ready to buy customers, lowers your cost per lead over time, and builds a presence competitors find hard to match. If you are ready for SEO services that focus on real leads instead of empty clicks, Cremsocial is ready to help. Skip the BS and grab your free audit to see exactly where you stand.
+            Your Google Business Profile may be the most valuable marketing tool you are not using to its full potential. Optimized properly, it puts you in front of nearby customers at the exact moment they are ready to choose, and it keeps working day after day. If you want to turn your profile into a steady source of local leads, our Google Business Profile optimization can help. Get your free audit and see how much more your profile could be doing.
           </p>
         </motion.div>
 
         {/* FAQ */}
         <motion.div
-          {...fade(0.42)}
+          {...fade(0.5)}
           className="mb-10 rounded-3xl border border-indigo-200/60 bg-gradient-to-br from-white/80 via-indigo-50/40 to-violet-50/40 backdrop-blur-sm p-8 md:p-10"
         >
           <h2
@@ -431,7 +411,7 @@ export default function SEOPage() {
             </span>
           </h2>
           <p className="text-gray-600 mb-8 text-sm">
-            Straight answers to the questions we hear most often about our SEO services.
+            Straight answers to the questions we hear most often about Google Business Profile optimization and management.
           </p>
           <div className="space-y-3">
             {faqs.map((faq, i) => (
@@ -474,8 +454,8 @@ export default function SEOPage() {
 
         {/* Audit Form */}
         <motion.div
-          {...fade(0.44)}
-          id="seo-audit-form"
+          {...fade(0.52)}
+          id="gbp-audit-form"
           className="mb-10 rounded-3xl border border-indigo-200/60 bg-gradient-to-br from-white/80 via-indigo-50/40 to-violet-50/40 backdrop-blur-sm p-8 md:p-12 scroll-mt-24"
         >
           {submitted ? (
@@ -499,7 +479,7 @@ export default function SEOPage() {
                 Audit Request Received
               </h3>
               <p className="text-gray-600 max-w-md mx-auto">
-                A real person will review your information and get back to you with a clear, honest audit of your SEO situation — no pressure, no pitch.
+                A real person will review your profile and get back to you with an honest audit of your local presence — no pressure, no pitch.
               </p>
             </motion.div>
           ) : (
@@ -512,11 +492,11 @@ export default function SEOPage() {
                 >
                   Get Your Free{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600">
-                    SEO Audit
+                    Profile Audit
                   </span>
                 </h2>
                 <p className="text-gray-600 text-sm">
-                  Tell us about your business and we will show you exactly where your SEO stands and what to fix first. No pitch, no pressure.
+                  Tell us about your business and we will show you exactly what your Google Business Profile is missing and what to fix first.
                 </p>
               </div>
 
@@ -551,10 +531,10 @@ export default function SEOPage() {
                     className={inputClass}
                   />
                   <input
-                    name="website"
-                    type="url"
-                    placeholder="Website URL (e.g. https://yourbusiness.com)"
-                    value={form.website}
+                    name="address"
+                    type="text"
+                    placeholder="City / Service Area"
+                    value={form.address}
                     onChange={handleChange}
                     className={inputClass}
                   />
@@ -566,18 +546,18 @@ export default function SEOPage() {
                   className={inputClass}
                   style={{ color: form.situation ? "#1f2937" : "#9ca3af" }}
                 >
-                  <option value="" disabled>What best describes your SEO situation?</option>
-                  <option value="starting">Just starting — no SEO done yet</option>
-                  <option value="struggling">Have tried SEO but not getting results</option>
-                  <option value="past-agency">Had an agency — not happy with the outcome</option>
-                  <option value="growing">Growing and want to scale up</option>
-                  <option value="local">Focused on local / map pack rankings</option>
-                  <option value="unsure">Not sure — just want to know where I stand</option>
+                  <option value="" disabled>What best describes your profile situation?</option>
+                  <option value="no-profile">No Google Business Profile yet</option>
+                  <option value="incomplete">Profile exists but incomplete</option>
+                  <option value="few-reviews">Profile set up but very few reviews</option>
+                  <option value="not-ranking">Not showing up in local map results</option>
+                  <option value="suspended">Profile suspended or has issues</option>
+                  <option value="optimize">Profile is live — want to improve rankings</option>
                 </select>
                 <textarea
                   name="message"
                   rows={3}
-                  placeholder="Tell us a bit about your business and what you want to improve..."
+                  placeholder="Tell us a bit about your business, your location, and what you want more of — calls, walk-ins, bookings..."
                   value={form.message}
                   onChange={handleChange}
                   className={inputClass}
@@ -590,7 +570,7 @@ export default function SEOPage() {
                   className="w-full flex items-center justify-center gap-3 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 text-white shadow-lg shadow-indigo-500/30 cursor-pointer"
                   style={{ fontFamily: "Oswald, sans-serif", fontWeight: 600 }}
                 >
-                  SEND MY SEO AUDIT REQUEST
+                  SEND MY PROFILE AUDIT REQUEST
                   <Send className="w-4 h-4" />
                 </motion.button>
                 <p className="text-center text-gray-500 text-xs">
@@ -603,17 +583,17 @@ export default function SEOPage() {
 
         {/* CTA 4 Final Banner */}
         <motion.div
-          {...fade(0.46)}
+          {...fade(0.54)}
           className="rounded-3xl bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 p-8 md:p-12 text-center text-white"
         >
           <h2
             className="text-3xl md:text-4xl tracking-tight mb-3"
             style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
           >
-            Ready to Rank and Grow?
+            Turn Your Profile Into Leads
           </h2>
           <p className="text-white/85 mb-8 max-w-xl mx-auto text-lg">
-            Join the small businesses getting found and getting leads with our SEO company. Let us build your growth engine.
+            Join the local businesses getting found and getting calls with our local SEO services. Let us make your profile work harder.
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
