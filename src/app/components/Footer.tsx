@@ -81,18 +81,20 @@ export function Footer() {
               </h5>
               <div className="flex items-center gap-3">
                 {[
-                  { name: 'Instagram', icon: Instagram },
-                  { name: 'LinkedIn', icon: Linkedin },
-                  { name: 'Facebook', icon: Facebook }
+                  { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/cremsocial' },
+                  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/cremsocial' },
+                  { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/cremsocial' }
                 ].map((social) => (
-                  <span
+                  <a
                     key={social.name}
-                    className="w-10 h-10 rounded-full border border-gray-200 bg-white/70 flex items-center justify-center text-gray-700"
-                    aria-label={social.name}
-                    title={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Crem Social on ${social.name}`}
+                    className="w-10 h-10 rounded-full border border-gray-200 bg-white/70 flex items-center justify-center text-gray-700 hover:text-indigo-600 hover:border-indigo-300 transition-colors"
                   >
                     <social.icon className="w-4 h-4" />
-                  </span>
+                  </a>
                 ))}
               </div>
             </div>
