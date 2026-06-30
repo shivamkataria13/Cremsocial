@@ -126,7 +126,7 @@ export default function SEOPage() {
         canonical="https://www.cremsocial.com/seo"
         schema={schema}
       />
-      <div className="max-w-5xl mx-auto py-16 px-6">
+      <div className="max-w-7xl mx-auto py-16 px-6">
 
         {/* Badge */}
         <motion.div {...fade(0)} className="flex justify-center mb-6">
