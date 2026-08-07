@@ -11,6 +11,7 @@ const categoryColors: Record<string, string> = {
   "Websites": "from-violet-500 to-purple-500",
   "Strategy": "from-amber-500 to-orange-500",
   "Shadow Operating": "from-fuchsia-500 to-pink-500",
+  "Social Media": "from-pink-500 to-rose-500",
 };
 
 export default function BlogPostPage() {
