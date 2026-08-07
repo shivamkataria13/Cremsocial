@@ -384,6 +384,7 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "The Only Marketing Numbers That Matter (No Lies) | Cremsocial",
     metaDescription: "Track CPL, conversion rate, customer acquisition cost, CLV, and real profit the right way—so you know if your marketing is working or just expensive activity."
   },
+
   {
     id: "7",
     slug: "digital-marketing-agency-sustainable-growth",
@@ -431,6 +432,8 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Professional Digital Marketing Services by Crem Social",
     metaDescription: "Grow your business with a trusted digital marketing agency offering SEO, Google Ads, social media marketing, local SEO, and customized digital marketing services."
   },
+
+  /* --- HIDDEN: future posts (publish Aug 10–15, 2026 — uncomment on publish date) ---
   {
     id: "8",
     slug: "ai-in-digital-marketing",
@@ -701,4 +704,5 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Local Business SEO Best Practices for Higher Local Rankings",
     metaDescription: "Learn proven local business SEO best practices to improve local rankings, attract more customers, and grow with Local SEO Brampton and expert local SEO services."
   }
+  --- END HIDDEN future posts */
 ];
