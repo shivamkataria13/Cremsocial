@@ -484,6 +484,8 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "AI in Digital Marketing - How AI Helps Businesses Grow Online",
     metaDescription: "Learn how AI in digital marketing improves SEO, content, PPC, and customer engagement. Discover how a digital marketing agency uses AI to drive business growth."
   },
+  --- END HIDDEN */
+
   {
     id: "9",
     slug: "best-social-media-platforms-small-businesses-2026",
@@ -530,6 +532,8 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Best Social Media Platforms for Small Businesses in 2026",
     metaDescription: "Discover the best social media platforms for small businesses in 2026. Learn how social media services and management help increase brand awareness and leads."
   },
+
+  /* --- HIDDEN: future posts (publish Aug 12–15, 2026 — uncomment on publish date) ---
   {
     id: "10",
     slug: "seo-services-brampton-local-businesses",
