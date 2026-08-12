@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router";
-import { signOut } from "firebase/auth";
+import { Navigate } from "react-router";
 import { collection, deleteDoc, doc, getDocs, serverTimestamp, setDoc } from "firebase/firestore";
-import { auth, BOOTSTRAP_ADMINS, db, useAdmin, useNoIndex } from "../lib/firebase";
+import { toast } from "sonner";
+import { Calendar, FileText, Lock, Plus, Trash2, UserPlus } from "lucide-react";
+import { AdminShell, btn, inputClass, type AdminTab } from "./AdminShell";
+import { PostEditor, slugify } from "./PostEditor";
+import { BOOTSTRAP_ADMINS, db, useAdmin, useNoIndex } from "../lib/firebase";
 import { blogPosts, type BlogPost } from "../data/blogData";
 
 const latest = [...blogPosts].sort((a, b) => (b.publishDate ?? "").localeCompare(a.publishDate ?? ""))[0];
@@ -21,25 +24,16 @@ const emptyPost = (): BlogPost => ({
   metaDescription: "",
 });
 
-const slugify = (s: string) =>
-  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
-
-const input =
-  "w-full px-4 py-2.5 rounded-xl bg-white border border-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-400 text-gray-800 placeholder:text-gray-400 text-sm";
-
-const label = "block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5";
-
 export default function AdminDashboard() {
   useNoIndex();
   const { user, admin } = useAdmin();
-  const [tab, setTab] = useState<"posts" | "admins">("posts");
+  const [tab, setTab] = useState<AdminTab>("posts");
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [editing, setEditing] = useState<BlogPost | null>(null);
   const [originalSlug, setOriginalSlug] = useState("");
-  const [preview, setPreview] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [admins, setAdmins] = useState<string[]>([]);
   const [newAdmin, setNewAdmin] = useState("");
-  const [status, setStatus] = useState("");
 
   const loadPosts = () =>
     getDocs(collection(db, "posts")).then((snap) =>
@@ -54,264 +48,206 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     if (admin) {
-      loadPosts();
-      loadAdmins();
+      loadPosts().catch(() => toast.error("Could not load posts"));
+      loadAdmins().catch(() => {});
     }
   }, [admin]);
 
-  if (admin === null) return <div className="min-h-screen grid place-items-center text-gray-400">Loading...</div>;
+  if (admin === null)
+    return <div className="min-h-screen grid place-items-center bg-slate-100 text-slate-400 text-sm">Loading…</div>;
   if (!admin) return <Navigate to="/admin/login" replace />;
 
-  const save = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const save = async () => {
     if (!editing) return;
     const slug = slugify(editing.slug || editing.title);
     const { id: _id, ...data } = editing;
-    setStatus("Saving...");
-    await setDoc(doc(db, "posts", slug), { ...data, slug, updatedAt: serverTimestamp() });
-    if (originalSlug && originalSlug !== slug) await deleteDoc(doc(db, "posts", originalSlug));
-    await loadPosts();
-    setEditing(null);
-    setPreview(false);
-    setStatus("Saved.");
+    setSaving(true);
+    try {
+      await setDoc(doc(db, "posts", slug), { ...data, slug, updatedAt: serverTimestamp() });
+      if (originalSlug && originalSlug !== slug) await deleteDoc(doc(db, "posts", originalSlug));
+      await loadPosts();
+      setEditing(null);
+      toast.success(originalSlug ? "Post updated" : "Post published");
+    } catch {
+      toast.error("Save failed — check your permissions");
+    } finally {
+      setSaving(false);
+    }
   };
 
-  const remove = async (slug: string) => {
-    if (!confirm(`Delete "${slug}"? This cannot be undone.`)) return;
-    await deleteDoc(doc(db, "posts", slug));
+  const remove = async (post: BlogPost) => {
+    if (!confirm(`Delete "${post.title}"? This cannot be undone.`)) return;
+    await deleteDoc(doc(db, "posts", post.slug));
     await loadPosts();
+    toast.success("Post deleted");
   };
 
   const addAdmin = async (e: React.FormEvent) => {
     e.preventDefault();
     const email = newAdmin.trim().toLowerCase();
     if (!email) return;
-    await setDoc(doc(db, "admins", email), { addedBy: user?.email ?? "", addedAt: serverTimestamp() });
-    setNewAdmin("");
-    await loadAdmins();
+    try {
+      await setDoc(doc(db, "admins", email), { addedBy: user?.email ?? "", addedAt: serverTimestamp() });
+      setNewAdmin("");
+      await loadAdmins();
+      toast.success(`${email} is now an admin`);
+    } catch {
+      toast.error("Could not add admin");
+    }
   };
 
   const removeAdmin = async (email: string) => {
     if (!confirm(`Remove admin ${email}?`)) return;
     await deleteDoc(doc(db, "admins", email));
     await loadAdmins();
+    toast.success("Admin removed");
   };
 
-  const edit = (post: BlogPost) => {
+  const open = (post: BlogPost, isNew = false) => {
     setEditing({ ...post });
-    setOriginalSlug(post.slug);
-    setPreview(false);
-    setStatus("");
+    setOriginalSlug(isNew ? "" : post.slug);
+    setTab("posts");
   };
 
-  const field = (key: keyof BlogPost, text: string, props: Record<string, unknown> = {}) => (
-    <div>
-      <label className={label}>{text}</label>
-      <input
-        className={input}
-        value={(editing?.[key] as string) ?? ""}
-        onChange={(e) => setEditing({ ...editing!, [key]: e.target.value })}
-        {...props}
-      />
-    </div>
-  );
+  const title = editing ? (originalSlug ? "Edit post" : "New post") : tab === "posts" ? "Posts" : "Admins";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-violet-50 to-white">
-      {/* Top bar */}
-      <div className="border-b border-indigo-100 bg-white/70 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center gap-4">
-          <span className="text-lg text-gray-900" style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}>
-            Blog Admin
-          </span>
-          <button
-            onClick={() => { setTab("posts"); setEditing(null); }}
-            className={`text-sm px-3 py-1.5 rounded-lg ${tab === "posts" ? "bg-indigo-100 text-indigo-700" : "text-gray-500"}`}
-          >
-            Posts
+    <AdminShell
+      tab={tab}
+      onTab={(t) => {
+        setTab(t);
+        setEditing(null);
+      }}
+      email={user?.email}
+      title={title}
+      actions={
+        tab === "posts" && !editing ? (
+          <button onClick={() => open(emptyPost(), true)} className={btn.primary}>
+            <Plus size={15} /> New post
           </button>
-          <button
-            onClick={() => { setTab("admins"); setEditing(null); }}
-            className={`text-sm px-3 py-1.5 rounded-lg ${tab === "admins" ? "bg-indigo-100 text-indigo-700" : "text-gray-500"}`}
-          >
-            Admins
-          </button>
-          <div className="flex-1" />
-          <span className="text-xs text-gray-400 hidden sm:block">{user?.email}</span>
-          <Link to="/blog" className="text-xs text-indigo-600 hover:underline">View blog</Link>
-          <button onClick={() => signOut(auth)} className="text-xs text-red-500 hover:underline">Sign out</button>
-        </div>
-      </div>
+        ) : null
+      }
+    >
+      {editing ? (
+        <PostEditor
+          post={editing}
+          isNew={!originalSlug}
+          onChange={setEditing}
+          onSave={save}
+          onCancel={() => setEditing(null)}
+          saving={saving}
+        />
+      ) : tab === "posts" ? (
+        <div className="max-w-4xl space-y-8">
+          <section className="space-y-2">
+            {posts.map((post) => (
+              <div
+                key={post.id}
+                className="group rounded-xl border border-slate-200 bg-white px-5 py-4 flex items-center gap-4 hover:border-indigo-300 transition-colors"
+              >
+                <div className="flex-1 min-w-0">
+                  <button
+                    onClick={() => open(post)}
+                    className="block text-left text-slate-900 font-medium truncate hover:text-indigo-600"
+                  >
+                    {post.title}
+                  </button>
+                  <p className="mt-1 flex items-center gap-2 text-xs text-slate-400 truncate">
+                    <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-medium">{post.category}</span>
+                    <span className="flex items-center gap-1">
+                      <Calendar size={11} /> {post.publishDate}
+                    </span>
+                    <span className="truncate">/blog/{post.slug}</span>
+                  </p>
+                </div>
+                <button onClick={() => open(post)} className="text-sm text-slate-500 hover:text-indigo-600">
+                  Edit
+                </button>
+                <button
+                  onClick={() => remove(post)}
+                  className="p-2 rounded-lg text-slate-300 hover:text-red-500 hover:bg-red-50"
+                  aria-label="Delete post"
+                >
+                  <Trash2 size={15} />
+                </button>
+              </div>
+            ))}
 
-      <div className="max-w-6xl mx-auto px-6 py-8">
-        {status && <p className="mb-4 text-sm text-indigo-600">{status}</p>}
+            {posts.length === 0 && (
+              <div className="rounded-xl border border-dashed border-slate-300 bg-white py-16 text-center">
+                <FileText size={26} className="mx-auto text-slate-300 mb-3" />
+                <p className="text-slate-500 text-sm mb-4">No published posts yet.</p>
+                <button onClick={() => open(emptyPost(), true)} className={btn.primary}>
+                  <Plus size={15} /> Write the first one
+                </button>
+              </div>
+            )}
+          </section>
 
-        {tab === "admins" && (
-          <div className="rounded-3xl border border-indigo-100 bg-white/80 p-8 max-w-xl">
-            <h2 className="text-xl text-gray-900 mb-4" style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}>
-              Admins
+          <section>
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
+              Built into the site ({blogPosts.length})
             </h2>
-            <form onSubmit={addAdmin} className="flex gap-2 mb-6">
+            <div className="rounded-xl border border-slate-200 bg-white divide-y divide-slate-100">
+              {blogPosts.map((post) => (
+                <div key={post.id} className="px-5 py-3 flex items-center gap-3 text-sm">
+                  <Lock size={13} className="text-slate-300 shrink-0" />
+                  <span className="text-slate-600 truncate flex-1">{post.title}</span>
+                  <span className="text-xs text-slate-400 hidden sm:block">{post.publishDate ?? "—"}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-slate-400">These live in the code and are edited by a developer.</p>
+          </section>
+        </div>
+      ) : (
+        <div className="max-w-lg space-y-6">
+          <form onSubmit={addAdmin} className="rounded-xl border border-slate-200 bg-white p-6">
+            <h2 className="text-sm font-semibold text-slate-900 mb-1">Invite an admin</h2>
+            <p className="text-xs text-slate-500 mb-4">
+              They sign in with Google, or with an email/password account you create in Firebase Auth.
+            </p>
+            <div className="flex gap-2">
               <input
                 type="email"
                 required
-                placeholder="new-admin@email.com"
-                className={input}
+                placeholder="teammate@email.com"
+                className={inputClass}
                 value={newAdmin}
                 onChange={(e) => setNewAdmin(e.target.value)}
               />
-              <button className="px-5 rounded-xl bg-indigo-600 text-white text-sm font-semibold whitespace-nowrap">Add</button>
-            </form>
-            <ul className="space-y-2 text-sm">
-              {BOOTSTRAP_ADMINS.map((email) => (
-                <li key={email} className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-gray-50 text-gray-700">
-                  {email}
-                  <span className="text-xs text-gray-400">owner</span>
-                </li>
-              ))}
-              {admins.filter((e) => !BOOTSTRAP_ADMINS.includes(e)).map((email) => (
-                <li key={email} className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-gray-50 text-gray-700">
-                  {email}
-                  <button onClick={() => removeAdmin(email)} className="text-xs text-red-500 hover:underline">Remove</button>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-xs text-gray-400">
-              Added admins sign in with Google, or with an email/password account created in Firebase Auth.
-            </p>
-          </div>
-        )}
-
-        {tab === "posts" && !editing && (
-          <>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl text-gray-900" style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}>
-                Posts ({posts.length})
-              </h2>
-              <button
-                onClick={() => edit(emptyPost())}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-sm"
-                style={{ fontFamily: "Oswald, sans-serif", fontWeight: 600 }}
-              >
-                NEW POST
+              <button className={btn.primary}>
+                <UserPlus size={15} /> Add
               </button>
             </div>
-            <div className="space-y-3">
-              {posts.map((post) => (
-                <div key={post.id} className="rounded-2xl border border-indigo-100 bg-white/80 p-5 flex items-center gap-4">
-                  <div className="flex-1 min-w-0">
-                    <p className="text-gray-900 font-semibold truncate">{post.title}</p>
-                    <p className="text-xs text-gray-400 truncate">
-                      /blog/{post.slug} • {post.category} • {post.publishDate}
-                    </p>
-                  </div>
-                  <button onClick={() => edit(post)} className="text-sm text-indigo-600 hover:underline">Edit</button>
-                  <button onClick={() => remove(post.slug)} className="text-sm text-red-500 hover:underline">Delete</button>
-                </div>
-              ))}
-              {posts.length === 0 && <p className="text-gray-400 text-sm">No posts yet. Create one.</p>}
-            </div>
-            <p className="mt-6 text-xs text-gray-400">
-              The {blogPosts.length} original posts live in the code and are not editable here.
-            </p>
-          </>
-        )}
-
-        {tab === "posts" && editing && (
-          <form onSubmit={save} className="space-y-5">
-            <div className="flex items-center gap-3">
-              <button type="button" onClick={() => setEditing(null)} className="text-sm text-gray-500 hover:underline">
-                ← Back
-              </button>
-              <div className="flex-1" />
-              <button
-                type="button"
-                onClick={() => setPreview(!preview)}
-                className="px-4 py-2 rounded-xl border border-indigo-200 text-indigo-600 text-sm"
-              >
-                {preview ? "Edit" : "Preview"}
-              </button>
-              <button
-                type="submit"
-                className="px-6 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-sm"
-                style={{ fontFamily: "Oswald, sans-serif", fontWeight: 600 }}
-              >
-                PUBLISH
-              </button>
-            </div>
-
-            {preview ? (
-              <div className="rounded-3xl bg-white/80 border border-indigo-100 p-8 md:p-12">
-                <div className="flex flex-wrap items-center gap-3 mb-5 text-xs font-bold uppercase tracking-wider text-indigo-600">
-                  <span className="bg-indigo-100 px-2 py-1 rounded">{editing.category}</span>
-                  <span className="text-gray-500">{editing.readTime}</span>
-                  <span className="text-gray-500">{editing.targetAudience}</span>
-                  <span className="text-gray-500">{editing.publishDate}</span>
-                </div>
-                <h1
-                  className="text-3xl md:text-5xl text-gray-900 tracking-tight leading-tight mb-6"
-                  style={{ fontFamily: "Oswald, sans-serif", fontWeight: 700 }}
-                >
-                  {editing.title || "Untitled"}
-                </h1>
-                <div className="rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 p-6 mb-8">
-                  <p className="text-lg text-gray-700 italic" style={{ fontFamily: "Playfair Display, serif" }}>
-                    {editing.intro}
-                  </p>
-                </div>
-                <div className="blog-content" dangerouslySetInnerHTML={{ __html: editing.content }} />
-              </div>
-            ) : (
-              <div className="rounded-3xl border border-indigo-100 bg-white/80 p-8 space-y-5">
-                {field("title", "Title", {
-                  required: true,
-                  onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                    setEditing({
-                      ...editing,
-                      title: e.target.value,
-                      slug: originalSlug ? editing.slug : slugify(e.target.value),
-                    }),
-                })}
-                {field("slug", "Slug (URL)", { required: true })}
-                <div className="grid md:grid-cols-2 gap-5">
-                  {field("category", "Category")}
-                  {field("targetAudience", "Target Audience")}
-                  {field("readTime", "Read Time")}
-                  {field("publishDate", "Publish Date", { type: "date" })}
-                </div>
-                <div>
-                  <label className={label}>Intro</label>
-                  <textarea
-                    rows={3}
-                    className={input}
-                    value={editing.intro}
-                    onChange={(e) => setEditing({ ...editing, intro: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <label className={label}>Content (HTML — h2, p, ul, li, strong)</label>
-                  <textarea
-                    rows={22}
-                    className={`${input} font-mono text-xs`}
-                    value={editing.content}
-                    onChange={(e) => setEditing({ ...editing, content: e.target.value })}
-                  />
-                </div>
-                {field("metaTitle", "Meta Title")}
-                <div>
-                  <label className={label}>Meta Description</label>
-                  <textarea
-                    rows={2}
-                    className={input}
-                    value={editing.metaDescription}
-                    onChange={(e) => setEditing({ ...editing, metaDescription: e.target.value })}
-                  />
-                </div>
-              </div>
-            )}
           </form>
-        )}
-      </div>
-    </div>
+
+          <div className="rounded-xl border border-slate-200 bg-white divide-y divide-slate-100">
+            {BOOTSTRAP_ADMINS.map((email) => (
+              <div key={email} className="px-5 py-3.5 flex items-center gap-3 text-sm">
+                <span className="text-slate-700 truncate flex-1">{email}</span>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded">
+                  Owner
+                </span>
+              </div>
+            ))}
+            {admins
+              .filter((e) => !BOOTSTRAP_ADMINS.includes(e))
+              .map((email) => (
+                <div key={email} className="px-5 py-3.5 flex items-center gap-3 text-sm">
+                  <span className="text-slate-700 truncate flex-1">{email}</span>
+                  <button
+                    onClick={() => removeAdmin(email)}
+                    className="p-1.5 rounded-lg text-slate-300 hover:text-red-500 hover:bg-red-50"
+                    aria-label="Remove admin"
+                  >
+                    <Trash2 size={15} />
+                  </button>
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
+    </AdminShell>
   );
 }

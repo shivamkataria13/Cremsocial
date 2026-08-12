@@ -6,8 +6,9 @@ import { Preloader } from "./components/Preloader";
 import { MouseGradient } from "./components/MouseGradient";
 
 export default function App() {
-  // Skip the intro on admin screens.
-  const [showPreloader, setShowPreloader] = useState(!window.location.pathname.startsWith("/admin"));
+  // Admin screens get none of the site chrome (intro, gradient).
+  const isAdminArea = window.location.pathname.startsWith("/admin");
+  const [showPreloader, setShowPreloader] = useState(!isAdminArea);
 
   const handlePreloaderComplete = () => {
     // Signal that intro is done (Bloom phase started)
@@ -27,7 +28,7 @@ export default function App() {
 
   return (
     <>
-      <MouseGradient />
+      {!isAdminArea && <MouseGradient />}
       
       <AnimatePresence mode="wait">
         {showPreloader && (
