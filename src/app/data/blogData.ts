@@ -7,6 +7,7 @@ export interface BlogPost {
   targetAudience: string;
   intro: string;
   content: string; // HTML or Markdown-like string
+  source?: string; // plain-text original from the admin editor (see admin/format.ts)
   metaTitle: string;
   metaDescription: string;
   publishDate?: string;

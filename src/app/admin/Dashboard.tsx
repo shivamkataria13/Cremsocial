@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Calendar, FileText, Lock, Plus, Trash2, UserPlus } from "lucide-react";
 import { AdminShell, btn, inputClass, type AdminTab } from "./AdminShell";
 import { PostEditor, slugify } from "./PostEditor";
+import { toHtml } from "./format";
 import { BOOTSTRAP_ADMINS, db, useAdmin, useNoIndex } from "../lib/firebase";
 import { blogPosts, type BlogPost } from "../data/blogData";
 
@@ -61,9 +62,16 @@ export default function AdminDashboard() {
     if (!editing) return;
     const slug = slugify(editing.slug || editing.title);
     const { id: _id, ...data } = editing;
+    const source = editing.source ?? editing.content;
     setSaving(true);
     try {
-      await setDoc(doc(db, "posts", slug), { ...data, slug, updatedAt: serverTimestamp() });
+      await setDoc(doc(db, "posts", slug), {
+        ...data,
+        slug,
+        source,
+        content: toHtml(source), // rendered HTML the blog reads
+        updatedAt: serverTimestamp(),
+      });
       if (originalSlug && originalSlug !== slug) await deleteDoc(doc(db, "posts", originalSlug));
       await loadPosts();
       setEditing(null);

@@ -50,9 +50,9 @@ export default function AdminLogin() {
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-slate-100">
       {/* Brand panel */}
-      <div className="hidden lg:flex flex-col justify-between bg-slate-950 p-12 text-white">
+      <div className="hidden lg:flex flex-col justify-between bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 p-12 text-white">
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500" />
+          <div className="w-7 h-7 rounded-lg bg-white/25" />
           <span className="text-sm tracking-wide" style={{ fontFamily: "Oswald, sans-serif", fontWeight: 600 }}>
             CREMSOCIAL
           </span>
@@ -64,11 +64,11 @@ export default function AdminLogin() {
           >
             Blog control room.
           </h2>
-          <p className="text-slate-400 max-w-sm">
+          <p className="text-white/80 max-w-sm">
             Write, preview and publish posts straight to the site. Invite-only access.
           </p>
         </div>
-        <p className="text-xs text-slate-600">Not linked from anywhere on the public site.</p>
+        <p className="text-xs text-white/60">Not linked from anywhere on the public site.</p>
       </div>
 
       {/* Form */}

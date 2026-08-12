@@ -1,0 +1,144 @@
+/**
+ * Plain text / Google-Docs markdown → the same HTML the hand-written posts use.
+ *
+ *   ## Section          -> <h2>Section</h2>
+ *   ### 1. Sub-heading  -> <p><strong>1. Sub-heading</strong><br>lines under it</p>
+ *   - item              -> <ul><li>item</li></ul>
+ *   **bold**            -> <strong>bold</strong>
+ *   [text](url)         -> <a href="url">text</a>  (cremsocial.com links become relative)
+ *   anything else       -> <p>...</p>
+ *
+ * Blocks that already start with "<" pass through untouched, so old posts
+ * written straight in HTML keep working.
+ */
+
+/** Docs exports escape punctuation: "1\. Thing" */
+const unescape = (s: string) => s.replace(/\\([.\-*_#+])/g, "$1");
+
+/** Keep internal links inside the SPA router. */
+const href = (url: string) => url.replace(/^https?:\/\/(www\.)?cremsocial\.com\/?/i, "/");
+
+const inline = (s: string) =>
+  unescape(s)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\[([^\]]+)\]\(([^)\s]+)[^)]*\)/g, (_, text, url) => `<a href="${href(url)}">${text}</a>`);
+
+export function toHtml(src: string): string {
+  return src
+    .replace(/\r\n/g, "\n")
+    .split(/\n{2,}/)
+    .map((b) => b.trim())
+    .filter(Boolean)
+    .map((block) => {
+      if (block.startsWith("<")) return block;
+
+      const lines = block.split("\n").map((l) => l.trim()).filter(Boolean);
+      const rest = lines.slice(1).map(inline).join("<br>");
+      const heading = lines[0].match(/^(#{1,3})\s+(.*)$/);
+
+      if (heading && heading[1].length <= 2) {
+        const h2 = `<h2>${inline(heading[2])}</h2>`;
+        return rest ? `${h2}\n<p>${rest}</p>` : h2;
+      }
+
+      if (heading) {
+        return `<p><strong>${inline(heading[2])}</strong>${rest ? `<br>${rest}` : ""}</p>`;
+      }
+
+      if (lines.every((l) => /^[-*]\s/.test(l))) {
+        return `<ul>\n${lines.map((l) => `  <li>${inline(l.slice(2))}</li>`).join("\n")}\n</ul>`;
+      }
+
+      return `<p>${lines.map(inline).join("<br>")}</p>`;
+    })
+    .join("\n\n");
+}
+
+/**
+ * Turns raw prose pasted out of Docs/Word (no markdown at all) into the markers
+ * above: a short line that does not end like a sentence is a heading, and a
+ * numbered one ("1. ...") or a question is a sub-heading glued to the
+ * paragraph beneath it.
+ */
+export function autoFormat(raw: string): string {
+  const lines = raw.replace(/\r\n/g, "\n").split("\n").map((l) => l.trim());
+
+  const marked = lines.map((line) => {
+    if (!line || /^(#{1,3} |[-*] |<)/.test(line)) return line;
+
+    const headingish = line.length <= 90 && !/[.,;:]$/.test(line);
+    if (!headingish) return line;
+    if (/^\d+[.)]\s/.test(line) || line.endsWith("?")) return `### ${line}`;
+    if (line.split(/\s+/).length <= 12 && !line.endsWith("!")) return `## ${line}`;
+    return line;
+  });
+
+  // Glue a "###" heading to the paragraph that follows it.
+  const out: string[] = [];
+  for (const line of marked) {
+    if (line === "" && out.at(-1)?.startsWith("### ")) continue;
+    out.push(line);
+  }
+
+  return out.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+export interface ParsedDoc {
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  intro: string;
+  body: string;
+  readTime: string;
+}
+
+const stripMarks = (s: string) =>
+  unescape(s)
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/[*_`#]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+/**
+ * Whole-document paste: pulls the Meta Title / Meta Description lines, the "#"
+ * headline and the opening paragraphs out of a blog doc, leaving the sections
+ * as the body.
+ */
+export function parseDoc(raw: string): ParsedDoc {
+  const lines = raw.replace(/\r\n/g, "\n").split("\n");
+  let title = "";
+  let metaTitle = "";
+  let metaDescription = "";
+  const rest: string[] = [];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    const meta = trimmed.match(/^\**\s*meta\s*(title|description)\s*\**\s*[:\-–]\s*(.+)$/i);
+    if (meta) {
+      if (meta[1].toLowerCase() === "title") metaTitle = stripMarks(meta[2]);
+      else metaDescription = stripMarks(meta[2]);
+      continue;
+    }
+    if (!title && /^#\s+\S/.test(trimmed)) {
+      title = stripMarks(trimmed.slice(2));
+      continue;
+    }
+    rest.push(line);
+  }
+
+  // No markdown headings at all? It came from a .docx — guess the structure.
+  let body = rest.join("\n").trim();
+  if (!/^#{2,3}\s/m.test(body)) body = autoFormat(body);
+
+  // Everything before the first section becomes the intro pull-quote.
+  const firstSection = body.search(/^##\s/m);
+  let intro = "";
+  if (firstSection > 0) {
+    intro = stripMarks(body.slice(0, firstSection));
+    body = body.slice(firstSection).trim();
+  }
+
+  const words = raw.split(/\s+/).filter(Boolean).length;
+
+  return { title, metaTitle, metaDescription, intro, body, readTime: `${Math.max(1, Math.round(words / 200))} min read` };
+}

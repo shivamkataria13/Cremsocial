@@ -1,14 +1,15 @@
 import { useRef, useState } from "react";
-import { ArrowLeft, Eye, Pencil, Save } from "lucide-react";
+import { ArrowLeft, Eye, Pencil, Save, Wand2 } from "lucide-react";
 import { btn, inputClass, labelClass } from "./AdminShell";
+import { autoFormat, toHtml } from "./format";
 import type { BlogPost } from "../data/blogData";
 
 const SNIPPETS: [string, string][] = [
-  ["H2", "\n<h2>Heading</h2>\n"],
-  ["Para", "\n<p>Text</p>\n"],
-  ["List", "\n<ul>\n  <li>Item</li>\n  <li>Item</li>\n</ul>\n"],
-  ["Bold", "<strong>text</strong>"],
-  ["Link", '<a href="/services">text</a>'],
+  ["Section", "\n## Section heading\n"],
+  ["Sub-heading", "\n### 1. Sub-heading\nText under it.\n"],
+  ["List", "\n- Item\n- Item\n"],
+  ["Bold", "**text**"],
+  ["Link", "[text](/services)"],
 ];
 
 export function PostEditor({
@@ -29,6 +30,10 @@ export function PostEditor({
   const [preview, setPreview] = useState(false);
   const contentRef = useRef<HTMLTextAreaElement>(null);
 
+  // Editor works on plain text; HTML is generated from it on save.
+  const source = post.source ?? post.content;
+  const setSource = (value: string) => onChange({ ...post, source: value });
+
   const set = (key: keyof BlogPost) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     onChange({ ...post, [key]: e.target.value });
 
@@ -36,7 +41,7 @@ export function PostEditor({
     const el = contentRef.current;
     if (!el) return;
     const at = el.selectionStart;
-    onChange({ ...post, content: post.content.slice(0, at) + snippet + post.content.slice(el.selectionEnd) });
+    setSource(source.slice(0, at) + snippet + source.slice(el.selectionEnd));
     requestAnimationFrame(() => {
       el.focus();
       el.selectionStart = el.selectionEnd = at + snippet.length;
@@ -87,7 +92,7 @@ export function PostEditor({
               </p>
             </div>
           )}
-          <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div className="blog-content" dangerouslySetInnerHTML={{ __html: toHtml(source) }} />
         </div>
       ) : (
         <div className="grid lg:grid-cols-3 gap-6 items-start">
@@ -130,9 +135,9 @@ export function PostEditor({
             </div>
 
             <div className={card}>
-              <div className="flex items-center justify-between mb-3">
-                <label className={labelClass + " mb-0"}>Content (HTML)</label>
-                <div className="flex gap-1.5">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <label className={labelClass + " mb-0"}>Content</label>
+                <div className="flex flex-wrap gap-1.5">
                   {SNIPPETS.map(([name, snippet]) => (
                     <button
                       key={name}
@@ -143,16 +148,28 @@ export function PostEditor({
                       {name}
                     </button>
                   ))}
+                  <button
+                    type="button"
+                    onClick={() => setSource(autoFormat(source))}
+                    className="px-2.5 py-1 rounded-md bg-indigo-50 border border-indigo-100 text-[11px] font-medium text-indigo-600 hover:bg-indigo-100 flex items-center gap-1"
+                  >
+                    <Wand2 size={11} /> Format pasted text
+                  </button>
                 </div>
               </div>
               <textarea
                 ref={contentRef}
                 rows={24}
-                className={`${inputClass} font-mono text-xs leading-relaxed`}
-                placeholder="<h2>Section</h2>&#10;<p>Body copy...</p>"
-                value={post.content}
-                onChange={set("content")}
+                className={`${inputClass} text-sm leading-relaxed`}
+                placeholder={"Opening paragraph...\n\n## Section heading\n\n### 1. Sub-heading\nText under the sub-heading.\n\n- bullet\n- bullet"}
+                value={source}
+                onChange={(e) => setSource(e.target.value)}
               />
+              <p className="mt-2 text-xs text-slate-400">
+                Write it plainly — paste the whole article, hit <strong className="font-semibold">Format pasted text</strong>, then
+                check Preview. <code className="text-slate-500">##</code> = section, <code className="text-slate-500">###</code> = numbered
+                sub-heading or FAQ question, <code className="text-slate-500">-</code> = bullet.
+              </p>
             </div>
           </div>
 

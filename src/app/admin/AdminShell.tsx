@@ -31,9 +31,9 @@ export function AdminShell({
       <Toaster position="top-right" richColors />
 
       {/* Sidebar */}
-      <aside className="w-16 md:w-60 shrink-0 bg-slate-950 text-slate-400 flex flex-col sticky top-0 h-screen">
-        <div className="h-16 flex items-center gap-2.5 px-4 md:px-6 border-b border-white/5">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 shrink-0" />
+      <aside className="w-16 md:w-60 shrink-0 bg-gradient-to-b from-indigo-600 via-violet-600 to-fuchsia-600 text-white/75 flex flex-col sticky top-0 h-screen">
+        <div className="h-16 flex items-center gap-2.5 px-4 md:px-6 border-b border-white/15">
+          <div className="w-7 h-7 rounded-lg bg-white/25 backdrop-blur-sm shrink-0" />
           <span className="hidden md:block text-white text-sm tracking-wide" style={{ fontFamily: "Oswald, sans-serif", fontWeight: 600 }}>
             CREMSOCIAL
           </span>
@@ -45,31 +45,31 @@ export function AdminShell({
               key={id}
               onClick={() => onTab(id)}
               className={`w-full flex items-center gap-3 px-3 md:px-4 py-2.5 rounded-lg text-sm transition-colors ${
-                tab === id ? "bg-indigo-500/15 text-white" : "hover:bg-white/5 hover:text-slate-200"
+                tab === id ? "bg-white/20 text-white shadow-sm" : "hover:bg-white/10 hover:text-white"
               }`}
             >
-              <Icon size={17} className={tab === id ? "text-indigo-400" : ""} />
+              <Icon size={17} />
               <span className="hidden md:block">{label}</span>
             </button>
           ))}
         </nav>
 
-        <div className="p-2 md:p-3 border-t border-white/5 space-y-1">
+        <div className="p-2 md:p-3 border-t border-white/15 space-y-1">
           <Link
             to="/blog"
-            className="w-full flex items-center gap-3 px-3 md:px-4 py-2.5 rounded-lg text-sm hover:bg-white/5 hover:text-slate-200"
+            className="w-full flex items-center gap-3 px-3 md:px-4 py-2.5 rounded-lg text-sm hover:bg-white/10 hover:text-white"
           >
             <ExternalLink size={17} />
             <span className="hidden md:block">View blog</span>
           </Link>
           <button
             onClick={() => signOut(auth)}
-            className="w-full flex items-center gap-3 px-3 md:px-4 py-2.5 rounded-lg text-sm hover:bg-red-500/10 hover:text-red-400"
+            className="w-full flex items-center gap-3 px-3 md:px-4 py-2.5 rounded-lg text-sm hover:bg-white/10 hover:text-white"
           >
             <LogOut size={17} />
             <span className="hidden md:block">Sign out</span>
           </button>
-          <p className="hidden md:block px-4 pt-2 pb-1 text-[11px] text-slate-600 truncate">{email}</p>
+          <p className="hidden md:block px-4 pt-2 pb-1 text-[11px] text-white/50 truncate">{email}</p>
         </div>
       </aside>
 
