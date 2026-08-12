@@ -26,6 +26,8 @@ const inline = (s: string) =>
 export function toHtml(src: string): string {
   return src
     .replace(/\r\n/g, "\n")
+    // a "###" heading owns the paragraph under it, blank line or not
+    .replace(/^(#{3}\s.*)\n\s*\n/gm, "$1\n")
     .split(/\n{2,}/)
     .map((b) => b.trim())
     .filter(Boolean)

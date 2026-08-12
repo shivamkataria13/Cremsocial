@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Calendar, FileText, Lock, Plus, Trash2, UserPlus } from "lucide-react";
 import { AdminShell, btn, inputClass, type AdminTab } from "./AdminShell";
 import { PostEditor, slugify } from "./PostEditor";
+import { Guide } from "./Guide";
 import { toHtml } from "./format";
 import { BOOTSTRAP_ADMINS, db, useAdmin, useNoIndex } from "../lib/firebase";
 import { blogPosts, type BlogPost } from "../data/blogData";
@@ -117,7 +118,11 @@ export default function AdminDashboard() {
     setTab("posts");
   };
 
-  const title = editing ? (originalSlug ? "Edit post" : "New post") : tab === "posts" ? "Posts" : "Admins";
+  const title = editing
+    ? originalSlug
+      ? "Edit post"
+      : "New post"
+    : { posts: "Posts", guide: "How to publish a blog", admins: "Admins" }[tab];
 
   return (
     <AdminShell
@@ -145,6 +150,8 @@ export default function AdminDashboard() {
           onCancel={() => setEditing(null)}
           saving={saving}
         />
+      ) : tab === "guide" ? (
+        <Guide />
       ) : tab === "posts" ? (
         <div className="max-w-4xl space-y-8">
           <section className="space-y-2">

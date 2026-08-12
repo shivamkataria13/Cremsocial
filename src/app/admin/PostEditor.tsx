@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { ArrowLeft, Eye, Pencil, Save, Wand2 } from "lucide-react";
 import { btn, inputClass, labelClass } from "./AdminShell";
-import { autoFormat, toHtml } from "./format";
+import { toast } from "sonner";
+import { parseDoc, toHtml } from "./format";
 import type { BlogPost } from "../data/blogData";
 
 const SNIPPETS: [string, string][] = [
@@ -36,6 +37,25 @@ export function PostEditor({
 
   const set = (key: keyof BlogPost) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     onChange({ ...post, [key]: e.target.value });
+
+  /** Paste a whole blog doc: title, meta, intro and sections all get filled in. */
+  const applyDoc = (text: string) => {
+    const doc = parseDoc(text);
+    const next: BlogPost = { ...post, source: doc.body, readTime: doc.readTime || post.readTime };
+    const filled: string[] = [];
+
+    if (doc.title) {
+      next.title = doc.title;
+      if (isNew || !post.slug) next.slug = slugify(doc.title);
+      filled.push("title");
+    }
+    if (doc.metaTitle) (next.metaTitle = doc.metaTitle), filled.push("meta title");
+    if (doc.metaDescription) (next.metaDescription = doc.metaDescription), filled.push("meta description");
+    if (doc.intro) (next.intro = doc.intro), filled.push("intro");
+
+    onChange(next);
+    toast.success(filled.length ? `Formatted — filled in ${filled.join(", ")}` : "Formatted");
+  };
 
   const insert = (snippet: string) => {
     const el = contentRef.current;
@@ -150,10 +170,10 @@ export function PostEditor({
                   ))}
                   <button
                     type="button"
-                    onClick={() => setSource(autoFormat(source))}
+                    onClick={() => applyDoc(source)}
                     className="px-2.5 py-1 rounded-md bg-indigo-50 border border-indigo-100 text-[11px] font-medium text-indigo-600 hover:bg-indigo-100 flex items-center gap-1"
                   >
-                    <Wand2 size={11} /> Format pasted text
+                    <Wand2 size={11} /> Re-format
                   </button>
                 </div>
               </div>
@@ -164,11 +184,17 @@ export function PostEditor({
                 placeholder={"Opening paragraph...\n\n## Section heading\n\n### 1. Sub-heading\nText under the sub-heading.\n\n- bullet\n- bullet"}
                 value={source}
                 onChange={(e) => setSource(e.target.value)}
+                onPaste={(e) => {
+                  const text = e.clipboardData.getData("text");
+                  if (text.trim().length < 300) return; // small pastes behave normally
+                  e.preventDefault();
+                  applyDoc(text);
+                }}
               />
               <p className="mt-2 text-xs text-slate-400">
-                Write it plainly — paste the whole article, hit <strong className="font-semibold">Format pasted text</strong>, then
-                check Preview. <code className="text-slate-500">##</code> = section, <code className="text-slate-500">###</code> = numbered
-                sub-heading or FAQ question, <code className="text-slate-500">-</code> = bullet.
+                Paste the entire blog doc here — the title, meta title, meta description and intro are pulled out
+                automatically. <code className="text-slate-500">##</code> = section, <code className="text-slate-500">###</code> =
+                numbered sub-heading or FAQ question, <code className="text-slate-500">-</code> = bullet. See the Guide tab.
               </p>
             </div>
           </div>

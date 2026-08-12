@@ -1,13 +1,14 @@
 import { Link } from "react-router";
 import { signOut } from "firebase/auth";
 import { Toaster } from "sonner";
-import { FileText, Users, ExternalLink, LogOut, type LucideIcon } from "lucide-react";
+import { FileText, Users, BookOpen, ExternalLink, LogOut, type LucideIcon } from "lucide-react";
 import { auth } from "../lib/firebase";
 
-export type AdminTab = "posts" | "admins";
+export type AdminTab = "posts" | "admins" | "guide";
 
 const NAV: { id: AdminTab; label: string; icon: LucideIcon }[] = [
   { id: "posts", label: "Posts", icon: FileText },
+  { id: "guide", label: "Guide", icon: BookOpen },
   { id: "admins", label: "Admins", icon: Users },
 ];
 
@@ -31,9 +32,9 @@ export function AdminShell({
       <Toaster position="top-right" richColors />
 
       {/* Sidebar */}
-      <aside className="w-16 md:w-60 shrink-0 bg-gradient-to-b from-indigo-600 via-violet-600 to-fuchsia-600 text-white/75 flex flex-col sticky top-0 h-screen">
-        <div className="h-16 flex items-center gap-2.5 px-4 md:px-6 border-b border-white/15">
-          <div className="w-7 h-7 rounded-lg bg-white/25 backdrop-blur-sm shrink-0" />
+      <aside className="w-16 md:w-60 shrink-0 bg-gradient-to-b from-indigo-950 via-violet-950 to-indigo-900 text-indigo-200/75 flex flex-col sticky top-0 h-screen">
+        <div className="h-16 flex items-center gap-2.5 px-4 md:px-6 border-b border-white/10">
+          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-400 to-fuchsia-400 shrink-0" />
           <span className="hidden md:block text-white text-sm tracking-wide" style={{ fontFamily: "Oswald, sans-serif", fontWeight: 600 }}>
             CREMSOCIAL
           </span>
@@ -45,7 +46,7 @@ export function AdminShell({
               key={id}
               onClick={() => onTab(id)}
               className={`w-full flex items-center gap-3 px-3 md:px-4 py-2.5 rounded-lg text-sm transition-colors ${
-                tab === id ? "bg-white/20 text-white shadow-sm" : "hover:bg-white/10 hover:text-white"
+                tab === id ? "bg-white/15 text-white" : "hover:bg-white/10 hover:text-white"
               }`}
             >
               <Icon size={17} />
@@ -54,7 +55,7 @@ export function AdminShell({
           ))}
         </nav>
 
-        <div className="p-2 md:p-3 border-t border-white/15 space-y-1">
+        <div className="p-2 md:p-3 border-t border-white/10 space-y-1">
           <Link
             to="/blog"
             className="w-full flex items-center gap-3 px-3 md:px-4 py-2.5 rounded-lg text-sm hover:bg-white/10 hover:text-white"
@@ -64,12 +65,12 @@ export function AdminShell({
           </Link>
           <button
             onClick={() => signOut(auth)}
-            className="w-full flex items-center gap-3 px-3 md:px-4 py-2.5 rounded-lg text-sm hover:bg-white/10 hover:text-white"
+            className="w-full flex items-center gap-3 px-3 md:px-4 py-2.5 rounded-lg text-sm text-red-400 hover:bg-red-500/15 hover:text-red-300"
           >
             <LogOut size={17} />
             <span className="hidden md:block">Sign out</span>
           </button>
-          <p className="hidden md:block px-4 pt-2 pb-1 text-[11px] text-white/50 truncate">{email}</p>
+          <p className="hidden md:block px-4 pt-2 pb-1 text-[11px] text-indigo-300/40 truncate">{email}</p>
         </div>
       </aside>
 
