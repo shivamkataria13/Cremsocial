@@ -6,7 +6,8 @@ import { Preloader } from "./components/Preloader";
 import { MouseGradient } from "./components/MouseGradient";
 
 export default function App() {
-  const [showPreloader, setShowPreloader] = useState(true);
+  // Skip the intro on admin screens.
+  const [showPreloader, setShowPreloader] = useState(!window.location.pathname.startsWith("/admin"));
 
   const handlePreloaderComplete = () => {
     // Signal that intro is done (Bloom phase started)

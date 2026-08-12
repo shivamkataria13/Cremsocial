@@ -1,0 +1,29 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===== KEEP YOUR EXISTING match BLOCKS — paste them back in here =====
+
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.email in ['bismaydey001@gmail.com', 'bismaydey0011@gmail.com']
+        || exists(/databases/$(database)/documents/admins/$(request.auth.token.email))
+      );
+    }
+
+    // Blog posts: public to read, admins to write.
+    match /posts/{slug} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Admin list: doc id is the email. Anyone signed in can check their OWN doc
+    // (needed by the login guard); only admins can list or change the roster.
+    match /admins/{email} {
+      allow get: if request.auth != null && (request.auth.token.email == email || isAdmin());
+      allow list: if isAdmin();
+      allow write: if isAdmin();
+    }
+  }
+}

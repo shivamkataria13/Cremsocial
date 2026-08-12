@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { Meta } from "../components/Meta";
-import { blogPosts } from "../data/blogData";
+import { usePosts } from "../hooks/usePosts";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Send, CheckCircle } from "lucide-react";
 
@@ -80,6 +80,7 @@ const scrollToForm = () => {
 };
 
 export default function BlogPage() {
+  const { posts: blogPosts } = usePosts();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", business: "", message: "" });

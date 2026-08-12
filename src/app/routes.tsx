@@ -14,6 +14,8 @@ import AdsPage from "./pages/Ads";
 import SocialMediaPage from "./pages/SocialMedia";
 import GoogleBusinessProfilePage from "./pages/GoogleBusinessProfile";
 import { ErrorPage } from "./components/ErrorPage";
+import AdminLogin from "./admin/Login";
+import AdminDashboard from "./admin/Dashboard";
 
 // We create a wrapper that runs your Layout AND fixes the scrolling
 function RootWrapper() {
@@ -86,4 +88,7 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  // Unlinked admin area — no site header/footer, noindex.
+  { path: "/admin/login", Component: AdminLogin, errorElement: <ErrorPage /> },
+  { path: "/admin", Component: AdminDashboard, errorElement: <ErrorPage /> },
 ]);

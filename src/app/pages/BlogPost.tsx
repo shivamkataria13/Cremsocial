@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router";
 import { Meta } from "../components/Meta";
-import { blogPosts } from "../data/blogData";
+import { usePosts } from "../hooks/usePosts";
 import { motion } from "motion/react";
 import { ArrowLeft, Clock, Users } from "lucide-react";
 
@@ -17,8 +17,13 @@ const categoryColors: Record<string, string> = {
 export default function BlogPostPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const post = blogPosts.find((p) => p.slug === slug);
-  const otherPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
+  const { posts, loading } = usePosts();
+  const post = posts.find((p) => p.slug === slug);
+  const otherPosts = posts.filter((p) => p.slug !== slug).slice(0, 3);
+
+  if (!post && loading) {
+    return <div className="max-w-3xl mx-auto py-32 px-6 text-center text-gray-400">Loading...</div>;
+  }
 
   if (!post) {
     return (
