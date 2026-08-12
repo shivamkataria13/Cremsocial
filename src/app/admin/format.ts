@@ -5,23 +5,36 @@
  *   ### 1. Sub-heading  -> <p><strong>1. Sub-heading</strong><br>lines under it</p>
  *   - item              -> <ul><li>item</li></ul>
  *   **bold**            -> <strong>bold</strong>
- *   [text](url)         -> <a href="url">text</a>  (cremsocial.com links become relative)
+ *   [text](url), bare url -> <a href="url">text</a>  (cremsocial.com links become relative)
  *   anything else       -> <p>...</p>
  *
- * Blocks that already start with "<" pass through untouched, so old posts
- * written straight in HTML keep working.
+ * Blocks that already start with "<" pass through untouched, so a post can be
+ * written straight in HTML exactly like the ones in blogData.ts.
  */
 
 /** Docs exports escape punctuation: "1\. Thing" */
 const unescape = (s: string) => s.replace(/\\([.\-*_#+])/g, "$1");
 
-/** Keep internal links inside the SPA router. */
+/** Keep internal links inside the SPA router: cremsocial.com/ads -> /ads */
 const href = (url: string) => url.replace(/^https?:\/\/(www\.)?cremsocial\.com\/?/i, "/");
 
-const inline = (s: string) =>
-  unescape(s)
+const TOKEN = /@@LINK(\d+)@@/g;
+
+const inline = (s: string) => {
+  // Finished anchors are parked while bare URLs are linked, so an href is never linked twice.
+  const held: string[] = [];
+  const hold = (html: string) => `@@LINK${held.push(html) - 1}@@`;
+
+  return unescape(s)
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\[([^\]]+)\]\(([^)\s]+)[^)]*\)/g, (_, text, url) => `<a href="${href(url)}">${text}</a>`);
+    .replace(/\[([^\]]+)\]\(([^)\s]+)[^)]*\)/g, (_, text, url) => hold(`<a href="${href(url)}">${text}</a>`))
+    .replace(/(?<!["'=])(?:https?:\/\/|www\.)[^\s<)]+/g, (raw) => {
+      const url = raw.replace(/[.,;:!?]+$/, "");
+      const full = url.startsWith("www.") ? `https://${url}` : url;
+      return hold(`<a href="${href(full)}">${url.replace(/^https?:\/\//, "")}</a>`) + raw.slice(url.length);
+    })
+    .replace(TOKEN, (_, i) => held[+i]);
+};
 
 export function toHtml(src: string): string {
   return src
@@ -130,13 +143,13 @@ export function parseDoc(raw: string): ParsedDoc {
 
   // No markdown headings at all? It came from a .docx — guess the structure.
   let body = rest.join("\n").trim();
-  if (!/^#{2,3}\s/m.test(body)) body = autoFormat(body);
+  if (!/^#{2,3}\s/m.test(body) && !body.startsWith("<")) body = autoFormat(body);
 
   // Everything before the first section becomes the intro pull-quote.
-  const firstSection = body.search(/^##\s/m);
+  const firstSection = body.search(/^(##\s|<h2)/m);
   let intro = "";
   if (firstSection > 0) {
-    intro = stripMarks(body.slice(0, firstSection));
+    intro = stripMarks(body.slice(0, firstSection).replace(/<[^>]+>/g, " "));
     body = body.slice(firstSection).trim();
   }
 

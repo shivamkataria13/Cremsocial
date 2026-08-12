@@ -69,10 +69,56 @@ export function Guide() {
             <span className={code}>**important**</span> — bold text.
           </li>
           <li>
-            <span className={code}>[link text](/seo)</span> — a link. Links to cremsocial.com are turned into internal ones
-            automatically, so <span className={code}>https://www.cremsocial.com/ads</span> becomes <span className={code}>/ads</span>.
+            <span className={code}>[link text](/seo)</span> — a link.
           </li>
         </ul>
+      </div>
+
+      <div className={card}>
+        <h2 className={h2}>Links</h2>
+        <p className="text-sm text-slate-500 mb-4">
+          Internal links are detected for you — anything pointing at cremsocial.com is rewritten to an in-site link, so the
+          page opens instantly instead of reloading the whole site. Three ways to write one, all equivalent:
+        </p>
+        <ul className="space-y-3 text-sm text-slate-600">
+          <li>
+            <span className={code}>[ads management services](https://www.cremsocial.com/ads)</span> — the normal Docs link. Pasting
+            the doc keeps it, and it becomes <span className={code}>/ads</span>.
+          </li>
+          <li>
+            <span className={code}>[ads management services](/ads)</span> — the short version if you are typing it yourself.
+          </li>
+          <li>
+            <span className={code}>https://www.cremsocial.com/ads</span> — a bare URL on its own becomes a link too.
+          </li>
+        </ul>
+        <p className="mt-4 text-sm text-slate-500">
+          Pages you can link to: <span className={code}>/</span> <span className={code}>/services</span>{" "}
+          <span className={code}>/seo</span> <span className={code}>/ads</span> <span className={code}>/social-media</span>{" "}
+          <span className={code}>/google-business</span> <span className={code}>/shadow-operating</span>{" "}
+          <span className={code}>/about</span> <span className={code}>/contact</span> <span className={code}>/blog</span>.
+          Links to other websites still work and open normally.
+        </p>
+        <p className="mt-3 text-xs text-slate-400">
+          Note: copying out of a <strong className="font-semibold">.docx</strong> loses the links — only the words survive. Paste
+          from the <strong className="font-semibold">.md</strong> version of the doc, or add the links back by hand.
+        </p>
+      </div>
+
+      <div className={card}>
+        <h2 className={h2}>Prefer to write HTML?</h2>
+        <p className="text-sm text-slate-500 mb-4">
+          You can. Anything starting with a tag is used exactly as written — the same format as the older posts in the code.
+          Mix it with the plain-text markers freely; each paragraph is handled on its own. The{" "}
+          <strong className="font-semibold">To HTML</strong> button converts what you have written so you can hand-tune the tags.
+        </p>
+        <pre className="p-4 rounded-lg bg-slate-900 text-slate-200 text-[12px] leading-relaxed overflow-x-auto">{`<h2>Step 1 — Can Google Even Find You?</h2>
+<p>Open Google and type <code>site:yourwebsite.com</code></p>
+<ul>
+  <li>Is your primary category the most specific one?</li>
+  <li>Do you have at least 10 photos?</li>
+</ul>
+<p><strong>Quick fix:</strong> change your H1 to include the phrase people search.</p>`}</pre>
       </div>
 
       <div className={card}>

@@ -42,7 +42,21 @@ assert.match(plain.intro, /^Google Ads can be an effective way/);
 assert.strictEqual(toHtml("## Hi"), "<h2>Hi</h2>");
 assert.strictEqual(toHtml("- a\n- b"), "<ul>\n  <li>a</li>\n  <li>b</li>\n</ul>");
 assert.strictEqual(toHtml("**x** and [y](/seo)"), '<p><strong>x</strong> and <a href="/seo">y</a></p>');
-assert.strictEqual(toHtml("<h2>legacy</h2>"), "<h2>legacy</h2>");
 assert.strictEqual(autoFormat("Conclusion\n\nText."), "## Conclusion\n\nText.");
+
+// blogData.ts-style HTML written by hand goes through untouched
+const raw = `<h2>Step 1</h2>\n<p>Read <a href="/seo">our SEO page</a> and spend 5 to 10 minutes.</p>`;
+assert.strictEqual(toHtml(raw), raw);
+
+// bare URLs become links; cremsocial.com ones become internal; hrefs are never re-linked
+assert.strictEqual(
+  toHtml("Visit https://www.cremsocial.com/contact today."),
+  '<p>Visit <a href="/contact">www.cremsocial.com/contact</a> today.</p>'
+);
+assert.strictEqual(
+  toHtml("See www.google.com/ads for details"),
+  '<p>See <a href="https://www.google.com/ads">www.google.com/ads</a> for details</p>'
+);
+assert.strictEqual(toHtml("Budget 7 to 12 per day"), "<p>Budget 7 to 12 per day</p>");
 
 console.log("format.ts ok");

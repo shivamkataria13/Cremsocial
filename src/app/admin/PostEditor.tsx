@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ArrowLeft, Eye, Pencil, Save, Wand2 } from "lucide-react";
+import { ArrowLeft, Code2, Eye, Pencil, Save, Wand2 } from "lucide-react";
 import { btn, inputClass, labelClass } from "./AdminShell";
 import { toast } from "sonner";
 import { parseDoc, toHtml } from "./format";
@@ -34,6 +34,7 @@ export function PostEditor({
   // Editor works on plain text; HTML is generated from it on save.
   const source = post.source ?? post.content;
   const setSource = (value: string) => onChange({ ...post, source: value });
+  const isHtml = source.trimStart().startsWith("<");
 
   const set = (key: keyof BlogPost) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     onChange({ ...post, [key]: e.target.value });
@@ -156,7 +157,9 @@ export function PostEditor({
 
             <div className={card}>
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                <label className={labelClass + " mb-0"}>Content</label>
+                <label className={labelClass + " mb-0"}>
+                  Content {isHtml && <span className="ml-1 text-indigo-500 normal-case">· HTML</span>}
+                </label>
                 <div className="flex flex-wrap gap-1.5">
                   {SNIPPETS.map(([name, snippet]) => (
                     <button
@@ -175,12 +178,22 @@ export function PostEditor({
                   >
                     <Wand2 size={11} /> Re-format
                   </button>
+                  {!isHtml && (
+                    <button
+                      type="button"
+                      onClick={() => setSource(toHtml(source))}
+                      title="Convert to raw HTML and edit the tags directly"
+                      className="px-2.5 py-1 rounded-md border border-slate-200 text-[11px] font-medium text-slate-600 hover:bg-slate-50 flex items-center gap-1"
+                    >
+                      <Code2 size={11} /> To HTML
+                    </button>
+                  )}
                 </div>
               </div>
               <textarea
                 ref={contentRef}
                 rows={24}
-                className={`${inputClass} text-sm leading-relaxed`}
+                className={`${inputClass} leading-relaxed ${isHtml ? "font-mono text-xs" : "text-sm"}`}
                 placeholder={"Opening paragraph...\n\n## Section heading\n\n### 1. Sub-heading\nText under the sub-heading.\n\n- bullet\n- bullet"}
                 value={source}
                 onChange={(e) => setSource(e.target.value)}
@@ -194,7 +207,9 @@ export function PostEditor({
               <p className="mt-2 text-xs text-slate-400">
                 Paste the entire blog doc here — the title, meta title, meta description and intro are pulled out
                 automatically. <code className="text-slate-500">##</code> = section, <code className="text-slate-500">###</code> =
-                numbered sub-heading or FAQ question, <code className="text-slate-500">-</code> = bullet. See the Guide tab.
+                numbered sub-heading or FAQ question, <code className="text-slate-500">-</code> = bullet. Raw HTML
+                (<code className="text-slate-500">&lt;h2&gt;</code>, <code className="text-slate-500">&lt;p&gt;</code>) also works
+                as-is. See the Guide tab.
               </p>
             </div>
           </div>
