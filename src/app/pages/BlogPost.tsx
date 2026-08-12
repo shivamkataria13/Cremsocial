@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router";
+import { useParams, Link, useNavigate } from "react-router";
 import { Meta } from "../components/Meta";
 import { blogPosts } from "../data/blogData";
 import { motion } from "motion/react";
@@ -16,6 +16,7 @@ const categoryColors: Record<string, string> = {
 
 export default function BlogPostPage() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const post = blogPosts.find((p) => p.slug === slug);
   const otherPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
@@ -122,6 +123,16 @@ export default function BlogPostPage() {
           <div
             className="blog-content"
             dangerouslySetInnerHTML={{ __html: post.content }}
+            onClick={(e) => {
+              const target = (e.target as HTMLElement).closest("a");
+              if (target) {
+                const href = target.getAttribute("href");
+                if (href && href.startsWith("/")) {
+                  e.preventDefault();
+                  navigate(href);
+                }
+              }
+            }}
           />
         </motion.div>
 
