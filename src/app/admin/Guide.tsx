@@ -18,7 +18,7 @@ const FIELDS: [string, string][] = [
 ];
 
 const STEPS: [typeof ClipboardPaste, string, string][] = [
-  [ClipboardPaste, "1. Paste the whole doc", "Open the blog doc, select all, copy. Click New post, click into Content and paste. Title, meta title, meta description, intro and read time fill in on their own."],
+  [ClipboardPaste, "1. Paste the whole doc", "Word, Google Docs or the .md file — select all, copy, then click New post and paste into Content. Title, meta title, meta description, intro and read time fill in on their own."],
   [Eye, "2. Check Preview", "Hit Preview to see the post exactly as it appears on the site. Fix the category and anything the paste got wrong, then set the publish date."],
   [Rocket, "3. Publish", "It goes live at /blog/your-slug straight away and appears at the top of the blog list."],
 ];
@@ -47,6 +47,20 @@ export function Guide() {
             </div>
           ))}
         </dl>
+      </div>
+
+      <div className={card}>
+        <h2 className={h2}>Copying from Word or Google Docs</h2>
+        <p className="text-sm text-slate-500 mb-3">
+          Pasting straight out of the document works — the headings, numbered sections and FAQ questions are recognised from
+          their shape, so you get the same result as the <span className={code}>.md</span> version with one exception:
+          <strong className="font-semibold text-slate-700"> hyperlinks do not survive a Word copy</strong>. Only the words come
+          across.
+        </p>
+        <p className="text-sm text-slate-500">
+          So: if the article has internal links, copy from the <span className={code}>.md</span> file. If it has none, copy from
+          wherever is convenient. Either way, hit Preview and check the headings landed where you expect.
+        </p>
       </div>
 
       <div className={card}>

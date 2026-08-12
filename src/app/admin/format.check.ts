@@ -38,6 +38,27 @@ assert.match(toHtml(plain.body), /<h2>Conclusion<\/h2>/);
 assert.match(toHtml(plain.body), /<p><strong>1\. What is PPC\?<\/strong><br>It is paid search advertising\./);
 assert.match(plain.intro, /^Google Ads can be an effective way/);
 
+// ---- 2b. The same doc pasted out of Word/Docs: no #, no **, no links ------
+const fromWord = parseDoc(
+  doc
+    .replace(/^#+\s*/gm, "")      // headings lose their markers
+    .replace(/\*\*/g, "")         // bold is styling, not characters
+    .replace(/\\/g, "")           // no escapes
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1") // links keep only their words
+);
+const wordHtml = toHtml(fromWord.body);
+
+assert.strictEqual(fromWord.metaTitle, "Google Ads PPC Management Brampton: 7 Common Mistakes");
+assert.match(fromWord.metaDescription, /^Learn 7 common mistakes/);
+assert.strictEqual(fromWord.title, "Google Ads PPC Management Brampton: 7 Mistakes Local Businesses Make Before Hiring an Agency");
+assert.match(fromWord.intro, /^For local businesses in Brampton/);
+assert.match(wordHtml, /^<h2>1\. Choosing an Agency Based Only on Price<\/h2>/);
+assert.match(wordHtml, /<h2>7\. Hiring an Agency Without Understanding Its Reporting<\/h2>/);
+assert.match(wordHtml, /<h2>Conclusion<\/h2>/);
+assert.match(wordHtml, /<h2>FAQ<\/h2>/);
+assert.match(wordHtml, /<p><strong>1\. What is Google Ads PPC Management\?<\/strong><br>Google Ads PPC Management involves/);
+assert.ok(!/<a /.test(wordHtml), "a .docx paste has no links left to find");
+
 // ---- 3. Markers, lists, inline styling, raw-HTML passthrough --------------
 assert.strictEqual(toHtml("## Hi"), "<h2>Hi</h2>");
 assert.strictEqual(toHtml("- a\n- b"), "<ul>\n  <li>a</li>\n  <li>b</li>\n</ul>");

@@ -83,7 +83,9 @@ export function autoFormat(raw: string): string {
 
     const headingish = line.length <= 90 && !/[.,;:]$/.test(line);
     if (!headingish) return line;
-    if (/^\d+[.)]\s/.test(line) || line.endsWith("?")) return `### ${line}`;
+    // A question is an FAQ entry; a numbered line is a section like "1. Choosing an Agency".
+    if (line.endsWith("?")) return `### ${line}`;
+    if (/^\d+[.)]\s/.test(line)) return `## ${line}`;
     if (line.split(/\s+/).length <= 12 && !line.endsWith("!")) return `## ${line}`;
     return line;
   });
@@ -139,6 +141,16 @@ export function parseDoc(raw: string): ParsedDoc {
       continue;
     }
     rest.push(line);
+  }
+
+  // Pasted out of Word/Docs, so the headline lost its "#": the first line is it.
+  if (!title) {
+    const first = rest.findIndex((l) => l.trim());
+    const candidate = rest[first]?.trim() ?? "";
+    if (candidate && candidate.length <= 200 && !/[.,;:]$/.test(candidate) && !/^[-*<#]/.test(candidate)) {
+      title = stripMarks(candidate);
+      rest.splice(first, 1);
+    }
   }
 
   // No markdown headings at all? It came from a .docx — guess the structure.
