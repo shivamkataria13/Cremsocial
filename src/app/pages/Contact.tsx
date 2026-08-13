@@ -228,7 +228,7 @@ export default function ContactPage() {
           </p>
           <div className="grid md:grid-cols-3 gap-4 mb-8">
             {[
-              { label: "Email", value: "hello@cremsocial.com", accent: "from-indigo-500 to-violet-500" },
+              { label: "Email", value: "shiv@cremsocial.com", accent: "from-indigo-500 to-violet-500" },
               { label: "Address", value: "Unit 69, 200 Malta Ave, Brampton, ON L6Y 6H8", accent: "from-violet-500 to-fuchsia-500" },
               { label: "Contact Form", value: "Fill in the form below and we will respond quickly.", accent: "from-fuchsia-500 to-pink-500" },
             ].map((item, i) => (
