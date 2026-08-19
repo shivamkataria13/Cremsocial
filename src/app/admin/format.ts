@@ -36,6 +36,20 @@ const inline = (s: string) => {
     .replace(TOKEN, (_, i) => held[+i]);
 };
 
+/** Splits the lines under a heading (or a bare block) into prose and a bullet list. */
+const body = (lines: string[]) => {
+  const first = lines.findIndex((l) => /^[-*]\s/.test(l));
+  const isList = first !== -1 && lines.slice(first).every((l) => /^[-*]\s/.test(l));
+  const prose = isList ? lines.slice(0, first) : lines;
+
+  return {
+    lead: prose.map(inline).join("<br>"),
+    list: isList
+      ? `<ul>\n${lines.slice(first).map((l) => `  <li>${inline(l.slice(2))}</li>`).join("\n")}\n</ul>`
+      : "",
+  };
+};
+
 export function toHtml(src: string): string {
   return src
     .replace(/\r\n/g, "\n")
@@ -48,23 +62,20 @@ export function toHtml(src: string): string {
       if (block.startsWith("<")) return block;
 
       const lines = block.split("\n").map((l) => l.trim()).filter(Boolean);
-      const rest = lines.slice(1).map(inline).join("<br>");
       const heading = lines[0].match(/^(#{1,3})\s+(.*)$/);
+      const { lead, list } = body(heading ? lines.slice(1) : lines);
 
       if (heading && heading[1].length <= 2) {
-        const h2 = `<h2>${inline(heading[2])}</h2>`;
-        return rest ? `${h2}\n<p>${rest}</p>` : h2;
+        return [`<h2>${inline(heading[2])}</h2>`, lead && `<p>${lead}</p>`, list].filter(Boolean).join("\n");
       }
 
       if (heading) {
-        return `<p><strong>${inline(heading[2])}</strong>${rest ? `<br>${rest}` : ""}</p>`;
+        return [`<p><strong>${inline(heading[2])}</strong>${lead ? `<br>${lead}` : ""}</p>`, list]
+          .filter(Boolean)
+          .join("\n");
       }
 
-      if (lines.every((l) => /^[-*]\s/.test(l))) {
-        return `<ul>\n${lines.map((l) => `  <li>${inline(l.slice(2))}</li>`).join("\n")}\n</ul>`;
-      }
-
-      return `<p>${lines.map(inline).join("<br>")}</p>`;
+      return [lead && `<p>${lead}</p>`, list].filter(Boolean).join("\n");
     })
     .join("\n\n");
 }

@@ -80,4 +80,23 @@ assert.strictEqual(
 );
 assert.strictEqual(toHtml("Budget 7 to 12 per day"), "<p>Budget 7 to 12 per day</p>");
 
+// bullets that sit directly under their lead-in sentence still become a list
+assert.strictEqual(
+  toHtml("Make sure your profile includes:\n- Business hours\n- Website URL"),
+  "<p>Make sure your profile includes:</p>\n<ul>\n  <li>Business hours</li>\n  <li>Website URL</li>\n</ul>"
+);
+
+// ...and a numbered sub-heading keeps its lead-in sentence AND its list
+assert.strictEqual(
+  toHtml("### 1. Optimize Your Profile\nMake sure it includes:\n- Business hours\n- Website URL"),
+  "<p><strong>1. Optimize Your Profile</strong><br>Make sure it includes:</p>\n" +
+    "<ul>\n  <li>Business hours</li>\n  <li>Website URL</li>\n</ul>"
+);
+
+// a section heading with a list under it
+assert.strictEqual(
+  toHtml("## Focus on\n- Reviews\n- Citations"),
+  "<h2>Focus on</h2>\n<ul>\n  <li>Reviews</li>\n  <li>Citations</li>\n</ul>"
+);
+
 console.log("format.ts ok");
