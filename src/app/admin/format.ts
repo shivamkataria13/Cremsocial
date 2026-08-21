@@ -116,6 +116,8 @@ export interface ParsedDoc {
   metaTitle: string;
   metaDescription: string;
   intro: string;
+  /** The intro with its links and bold kept — the plain `intro` feeds the blog cards. */
+  introHtml: string;
   body: string;
   readTime: string;
 }
@@ -133,7 +135,11 @@ const stripMarks = (s: string) =>
  * as the body.
  */
 export function parseDoc(raw: string): ParsedDoc {
-  const lines = raw.replace(/\r\n/g, "\n").split("\n");
+  const lines = raw
+    .replace(/\r\n/g, "\n")
+    // some docs run the two meta lines together on one line
+    .replace(/(.)\s(\**\s*meta\s*description\s*\**\s*[:\-–])/gi, "$1\n$2")
+    .split("\n");
   let title = "";
   let metaTitle = "";
   let metaDescription = "";
@@ -171,12 +177,24 @@ export function parseDoc(raw: string): ParsedDoc {
   // Everything before the first section becomes the intro pull-quote.
   const firstSection = body.search(/^(##\s|<h2)/m);
   let intro = "";
+  let introHtml = "";
   if (firstSection > 0) {
-    intro = stripMarks(body.slice(0, firstSection).replace(/<[^>]+>/g, " "));
+    const opening = body.slice(0, firstSection).trim();
+    intro = stripMarks(opening.replace(/<[^>]+>/g, " "));
+    // links and bold survive here even though the card text is plain
+    introHtml = opening.split(/\n{2,}/).map((p) => inline(p.replace(/\n/g, " ")).trim()).join(" ");
     body = body.slice(firstSection).trim();
   }
 
   const words = raw.split(/\s+/).filter(Boolean).length;
 
-  return { title, metaTitle, metaDescription, intro, body, readTime: `${Math.max(1, Math.round(words / 200))} min read` };
+  return {
+    title,
+    metaTitle,
+    metaDescription,
+    intro,
+    introHtml,
+    body,
+    readTime: `${Math.max(1, Math.round(words / 200))} min read`,
+  };
 }

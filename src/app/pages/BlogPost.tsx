@@ -46,6 +46,16 @@ export default function BlogPostPage() {
 
   const gradient = categoryColors[post.category] ?? "from-indigo-500 to-violet-500";
 
+  // internal links inside rendered HTML route through the SPA instead of reloading
+  const followInAppLinks = (e: React.MouseEvent) => {
+    const link = (e.target as HTMLElement).closest("a");
+    const href = link?.getAttribute("href");
+    if (href?.startsWith("/")) {
+      e.preventDefault();
+      navigate(href);
+    }
+  };
+
   return (
     <>
       <Meta title={post.metaTitle} description={post.metaDescription} />
@@ -103,11 +113,13 @@ export default function BlogPostPage() {
           <div className="relative rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 p-6 md:p-8">
             <div className={`absolute top-0 left-0 w-1 h-full rounded-l-2xl bg-gradient-to-b ${gradient}`} />
             <p
-              className="text-lg md:text-xl text-gray-700 leading-relaxed italic pl-4"
+              className="text-lg md:text-xl text-gray-700 leading-relaxed italic pl-4 blog-content"
               style={{ fontFamily: "Playfair Display, serif" }}
-            >
-              {post.intro}
-            </p>
+              onClick={followInAppLinks}
+              {...(post.introHtml
+                ? { dangerouslySetInnerHTML: { __html: post.introHtml } }
+                : { children: post.intro })}
+            />
           </div>
         </motion.div>
 
@@ -128,16 +140,7 @@ export default function BlogPostPage() {
           <div
             className="blog-content"
             dangerouslySetInnerHTML={{ __html: post.content }}
-            onClick={(e) => {
-              const target = (e.target as HTMLElement).closest("a");
-              if (target) {
-                const href = target.getAttribute("href");
-                if (href && href.startsWith("/")) {
-                  e.preventDefault();
-                  navigate(href);
-                }
-              }
-            }}
+            onClick={followInAppLinks}
           />
         </motion.div>
 

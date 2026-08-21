@@ -93,6 +93,12 @@ assert.strictEqual(
     "<ul>\n  <li>Business hours</li>\n  <li>Website URL</li>\n</ul>"
 );
 
+// both meta fields squashed onto one line, as some docs export them
+const squashed = parseDoc("Meta Title : Local SEO Services for Small Business Growth Meta Description : Grow your business.\n\n# Why Local SEO\n\nIntro line.\n\n## First\n\nBody.");
+assert.strictEqual(squashed.metaTitle, "Local SEO Services for Small Business Growth");
+assert.strictEqual(squashed.metaDescription, "Grow your business.");
+assert.strictEqual(squashed.title, "Why Local SEO");
+
 // a section heading with a list under it
 assert.strictEqual(
   toHtml("## Focus on\n- Reviews\n- Citations"),

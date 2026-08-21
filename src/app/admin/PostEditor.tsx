@@ -52,7 +52,7 @@ export function PostEditor({
     }
     if (doc.metaTitle) (next.metaTitle = doc.metaTitle), filled.push("meta title");
     if (doc.metaDescription) (next.metaDescription = doc.metaDescription), filled.push("meta description");
-    if (doc.intro) (next.intro = doc.intro), filled.push("intro");
+    if (doc.intro) (next.intro = doc.intro), (next.introHtml = doc.introHtml), filled.push("intro");
 
     onChange(next);
     toast.success(filled.length ? `Formatted — filled in ${filled.join(", ")}` : "Formatted");
