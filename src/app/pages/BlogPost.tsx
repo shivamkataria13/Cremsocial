@@ -58,7 +58,12 @@ export default function BlogPostPage() {
 
   return (
     <>
-      <Meta title={post.metaTitle} description={post.metaDescription} />
+      <Meta
+        title={post.metaTitle}
+        description={post.metaDescription}
+        canonical={`https://www.cremsocial.com/blog/${post.slug}`}
+        ogImage={post.image ? `https://www.cremsocial.com${post.image}` : undefined}
+      />
 
       <div className="max-w-4xl mx-auto py-12 px-6">
 

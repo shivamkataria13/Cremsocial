@@ -48,9 +48,13 @@ export function Meta({ title, description, canonical, ogImage = SITE_IMAGE, sche
 
     upsertMeta('meta[name="description"]', { name: "description" }, description);
 
+    // On a page without one, drop the previous route's tag rather than leaving
+    // it behind — a stale canonical is worse than none.
     if (canonical) {
       upsertLink("canonical", canonical);
       upsertMeta('meta[property="og:url"]', { property: "og:url" }, canonical);
+    } else {
+      document.querySelector('link[rel="canonical"]')?.remove();
     }
 
     upsertMeta('meta[property="og:title"]', { property: "og:title" }, title);

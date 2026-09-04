@@ -1159,7 +1159,6 @@ export const blogPosts: BlogPost[] = [
         <li><strong>SEO & Local SEO Services </strong>– Data-driven <a href="/seo">SEO services</a> focused on site structure, keyword research, on-page SEO, technical optimization, and valuable content to improve organic rankings, increase visibility, and attract searches that convert into customers.</li>
         <li><strong>Google Business Profile Optimization </strong>– Professional <a href="/google-business">Google Business Profile optimization</a> to improve local search visibility, strengthen your presence in the Google Map Pack, and help nearby customers discover and contact your business.</li>
         <li><strong>Social Media Marketing</strong> – Results-focused <a href="/social-media">social media marketing services</a> covering profile optimization, content strategy, content pillars, and consistent posting to increase engagement, website traffic, inquiries, replies, and DMs.</li>
-        <li><a href="/shadow-operating"><strong>Shadow Operating</strong></a> – Behind-the-scenes marketing and growth support, including offer strategy, sales funnel development, launch planning, and execution to help creators turn their audience into a sustainable source of revenue.</li>
       </ul>
 
       <p>That range means a Brampton business can start with a single PPC campaign and later add SEO, social, or a website refresh without switching agencies or losing continuity on tracking and reporting.</p>

@@ -25,7 +25,6 @@ Beyond PPC, Cremsocial also runs full digital marketing campaigns, so businesses
 - **SEO & Local SEO Services **– Data-driven [SEO services](https://www.cremsocial.com/seo) focused on site structure, keyword research, on-page SEO, technical optimization, and valuable content to improve organic rankings, increase visibility, and attract searches that convert into customers.
 - **Google Business Profile Optimization **– Professional [Google Business Profile optimization](https://www.cremsocial.com/google-business) to improve local search visibility, strengthen your presence in the Google Map Pack, and help nearby customers discover and contact your business.
 - **Social Media Marketing** – Results-focused [social media marketing services](https://www.cremsocial.com/social-media) covering profile optimization, content strategy, content pillars, and consistent posting to increase engagement, website traffic, inquiries, replies, and DMs.
-- [**Shadow Operating**](https://www.cremsocial.com/shadow-operating) – Behind-the-scenes marketing and growth support, including offer strategy, sales funnel development, launch planning, and execution to help creators turn their audience into a sustainable source of revenue.
 
 That range means a Brampton business can start with a single PPC campaign and later add SEO, social, or a website refresh without switching agencies or losing continuity on tracking and reporting.
 

@@ -6,6 +6,7 @@ export default function ServicesPage() {
       <Meta
         title="Our Services | No-BS Digital Marketing for SMBs & Creators"
         description="SEO, Ads, Social Media, Websites, and Shadow Operating. We don't do fluff. We do marketing that gets you leads, sales, and money in the bank."
+        canonical="https://www.cremsocial.com/services"
       />
       <div className="max-w-7xl mx-auto py-16 px-6">
         <h1 
