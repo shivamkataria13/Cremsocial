@@ -26,6 +26,11 @@ const inline = (s: string) => {
   const hold = (html: string) => `@@LINK${held.push(html) - 1}@@`;
 
   return unescape(s)
+    .replace(/!\[([^\]\n]*)\]\(([^)\s]+)[^)]*\)/g, (_, alt, url) =>
+      hold(`<img src="${url}" alt="${alt.replace(/"/g, "&quot;")}" loading="lazy">`)
+    )
+    // Word splits a link across a space, leaving an empty anchor next to the real one
+    .replace(/\[\s*\]\([^)]*\)\s*/g, "")
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\[([^\]]+)\]\(([^)\s]+)[^)]*\)/g, (_, text, url) => hold(`<a href="${href(url)}">${text}</a>`))
     .replace(/(?<!["'=])(?:https?:\/\/|www\.)[^\s<)]+/g, (raw) => {
@@ -43,7 +48,8 @@ const body = (lines: string[]) => {
   const prose = isList ? lines.slice(0, first) : lines;
 
   return {
-    lead: prose.map(inline).join("<br>"),
+    // an FAQ answer that shares its paragraph with the bold question gets a line break
+    lead: prose.map(inline).join("<br>").replace(/^(<strong>[^<]*\?\s*<\/strong>)\s*(?=\S)/, "$1<br>"),
     list: isList
       ? `<ul>\n${lines.slice(first).map((l) => `  <li>${inline(l.slice(2))}</li>`).join("\n")}\n</ul>`
       : "",
@@ -60,6 +66,8 @@ export function toHtml(src: string): string {
     .filter(Boolean)
     .map((block) => {
       if (block.startsWith("<")) return block;
+      // a picture on its own line is a block, not a paragraph
+      if (/^!\[[^\]]*\]\([^)\s]+\)$/.test(block)) return inline(block);
 
       const lines = block.split("\n").map((l) => l.trim()).filter(Boolean);
       const heading = lines[0].match(/^(#{1,3})\s+(.*)$/);
@@ -118,6 +126,8 @@ export interface ParsedDoc {
   intro: string;
   /** The intro with its links and bold kept — the plain `intro` feeds the blog cards. */
   introHtml: string;
+  /** A picture sitting above the intro, used as the post's lead image. */
+  image: string;
   body: string;
   readTime: string;
 }
@@ -137,8 +147,8 @@ const stripMarks = (s: string) =>
 export function parseDoc(raw: string): ParsedDoc {
   const lines = raw
     .replace(/\r\n/g, "\n")
-    // some docs run the two meta lines together on one line
-    .replace(/(.)\s(\**\s*meta\s*description\s*\**\s*[:\-–])/gi, "$1\n$2")
+    // some docs run the meta lines and the focus keyword together on one line
+    .replace(/([^[\n])\s*(\**\s*(?:meta\s*description|focus\s*keyword)\s*\**\s*[:\-–])/gi, "$1\n$2")
     .split("\n");
   let title = "";
   let metaTitle = "";
@@ -149,10 +159,17 @@ export function parseDoc(raw: string): ParsedDoc {
     const trimmed = line.trim();
     const meta = trimmed.match(/^\**\s*meta\s*(title|description)\s*\**\s*[:\-–]\s*(.+)$/i);
     if (meta) {
-      if (meta[1].toLowerCase() === "title") metaTitle = stripMarks(meta[2]);
-      else metaDescription = stripMarks(meta[2]);
+      // writers leave a character count on the end: "... (Ch 154)"
+      const value = stripMarks(meta[2]).replace(/\s*\(\s*ch\s*[^\d]?\s*\d+\s*\)\s*$/i, "");
+      if (meta[1].toLowerCase() === "title") metaTitle = value;
+      else metaDescription = value;
       continue;
     }
+    // an SEO note for the writer, not part of the article
+    if (/^#*\s*\**\s*focus\s*keyword\s*\**\s*[:\-–]/i.test(trimmed)) continue;
+    // heading marker left behind when a meta line was split off it
+    if (/^#+$/.test(trimmed)) continue;
+
     if (!title && /^#\s+\S/.test(trimmed)) {
       title = stripMarks(trimmed.slice(2));
       continue;
@@ -174,6 +191,13 @@ export function parseDoc(raw: string): ParsedDoc {
   let body = rest.join("\n").trim();
   if (!/^#{2,3}\s/m.test(body) && !body.startsWith("<")) body = autoFormat(body);
 
+  // A picture above the article is its lead image, not part of the copy.
+  let image = "";
+  body = body.replace(/^!\[[^\]\n]*\]\(([^)\s]+)[^)]*\)\s*/, (match, url) => {
+    image = url;
+    return "";
+  });
+
   // Everything before the first section becomes the intro pull-quote.
   const firstSection = body.search(/^(##\s|<h2)/m);
   let intro = "";
@@ -194,6 +218,7 @@ export function parseDoc(raw: string): ParsedDoc {
     metaDescription,
     intro,
     introHtml,
+    image,
     body,
     readTime: `${Math.max(1, Math.round(words / 200))} min read`,
   };

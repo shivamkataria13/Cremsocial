@@ -109,6 +109,15 @@ export default function BlogPostPage() {
             {post.title}
           </h1>
 
+          {/* Lead image */}
+          {post.image && (
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full rounded-2xl border border-white/60 shadow-lg shadow-indigo-100/40 mb-8"
+            />
+          )}
+
           {/* Pull-quote intro */}
           <div className="relative rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 p-6 md:p-8">
             <div className={`absolute top-0 left-0 w-1 h-full rounded-l-2xl bg-gradient-to-b ${gradient}`} />

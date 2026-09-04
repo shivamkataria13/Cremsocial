@@ -325,6 +325,15 @@
     font-style: italic;
   }
 
+  .blog-content img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    border: 1px solid rgba(99, 102, 241, 0.12);
+    margin: 28px 0;
+  }
+
   .blog-content a {
     color: #4f46e5;
     text-decoration: underline;

@@ -99,6 +99,22 @@ assert.strictEqual(squashed.metaTitle, "Local SEO Services for Small Business Gr
 assert.strictEqual(squashed.metaDescription, "Grow your business.");
 assert.strictEqual(squashed.title, "Why Local SEO");
 
+// a lead image is lifted out, and neither it nor a link in the intro is mangled
+const withImage = parseDoc(
+  "# Title\n\n![Focus Keyword: social media](/blog/x/image1.webp)\n\n" +
+    "Hiring a [social media marketing agency](https://www.cremsocial.com/social-media) makes sense.\n\n## First\n\nBody."
+);
+assert.strictEqual(withImage.image, "/blog/x/image1.webp");
+assert.strictEqual(withImage.intro, "Hiring a social media marketing agency makes sense.");
+assert.strictEqual(
+  withImage.introHtml,
+  'Hiring a <a href="/social-media">social media marketing agency</a> makes sense.'
+);
+assert.strictEqual(
+  toHtml("![Cremsocial office](/blog/x/i2.webp)"),
+  '<img src="/blog/x/i2.webp" alt="Cremsocial office" loading="lazy">'
+);
+
 // a section heading with a list under it
 assert.strictEqual(
   toHtml("## Focus on\n- Reviews\n- Citations"),
