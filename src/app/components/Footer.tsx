@@ -30,7 +30,6 @@ export function Footer() {
                 {[
                   { name: 'About', path: '/about' },
                   { name: 'Services', path: '/services' },
-                  { name: 'Shadow Ops', path: '/shadow-operating' },
                   { name: 'Blog', path: '/blog' },
                   { name: 'Contact', path: '/contact' }
                 ].map((item) => (
