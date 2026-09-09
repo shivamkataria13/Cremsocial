@@ -5,6 +5,19 @@ All notable changes to the Cremsocial site. Newest first.
 Dates are the day the change was made. Blog entries list the post's own publish
 date where it differs.
 
+## 2026-09-09
+
+### SEO
+
+- Fixed the canonical tag on `/seo`, which pointed at
+  `https://www.cremsocial.com/google-business` — telling Google the page was a
+  duplicate and to drop it from the index. It now points at `/seo`. Its Service
+  schema `url` carried the same wrong address and was fixed with it.
+- Fixed the canonical on `/shadow-operating`, which pointed at
+  `https://www.cremsocial.com/shadow-ops` — a URL that does not exist. Same fix
+  applied to that page's schema `url`.
+- Every page's canonical now matches its own route.
+
 ## 2026-09-04
 
 ### Fixed

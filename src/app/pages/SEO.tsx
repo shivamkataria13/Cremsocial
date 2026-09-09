@@ -45,7 +45,7 @@ const schema = [
     "name": "Google Business Profile Optimization",
     "description": "Get found on Google Maps with expert Google Business Profile optimization. Cremsocial offers local SEO services and GMB setup that bring calls, visits, and customers.",
     "provider": { "@type": "Organization", "name": "Crem Social", "url": "https://www.cremsocial.com" },
-    "url": "https://www.cremsocial.com/google-business",
+    "url": "https://www.cremsocial.com/seo",
     "areaServed": "CA"
   },
   {
@@ -123,7 +123,7 @@ export default function GoogleBusinessProfilePage() {
       <Meta
         title="Google Business Profile Optimization & Management | Cremsocial"
         description="Get found on Google Maps with expert Google Business Profile optimization. Cremsocial offers local SEO services and GMB setup that bring calls, visits, and customers."
-        canonical="https://www.cremsocial.com/google-business"
+        canonical="https://www.cremsocial.com/seo"
         schema={schema}
       />
       <div className="max-w-7xl mx-auto py-16 px-6">

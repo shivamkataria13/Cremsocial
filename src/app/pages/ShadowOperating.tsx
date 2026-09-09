@@ -41,7 +41,7 @@ const schema = [
     "name": "Shadow Ops — Done For You Marketing",
     "description": "Shadow Ops is full digital marketing handled behind the scenes by Cremsocial. SEO, ads, and social media run as one. You run your business, we run the growth.",
     "provider": { "@type": "Organization", "name": "Crem Social", "url": "https://www.cremsocial.com" },
-    "url": "https://www.cremsocial.com/shadow-ops",
+    "url": "https://www.cremsocial.com/shadow-operating",
     "areaServed": "CA"
   },
   {
@@ -109,7 +109,7 @@ export default function ShadowOperatingPage() {
       <Meta
         title="Shadow Ops | Done For You Marketing Behind the Scenes | Cremsocial"
         description="Shadow Ops is full digital marketing handled behind the scenes by Cremsocial. SEO, ads, and social media run as one. You run your business, we run the growth."
-        canonical="https://www.cremsocial.com/shadow-ops"
+        canonical="https://www.cremsocial.com/shadow-operating"
         schema={schema}
       />
       <div className="max-w-7xl mx-auto py-16 px-6">
