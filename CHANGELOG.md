@@ -5,6 +5,28 @@ All notable changes to the Cremsocial site. Newest first.
 Dates are the day the change was made. Blog entries list the post's own publish
 date where it differs.
 
+## 2026-09-11
+
+### Added
+
+- Two posts, published from `8 sept 2026.docx` and `10 sept 2026.docx`:
+  - *10 Best Google Maps SEO Agency in Brampton for Local Businesses*
+    (`/blog/best-google-maps-seo-agency-in-brampton-for-local-businesses`),
+    dated 8 Sept
+  - *12 Best PPC Services in Brampton: Top Agencies for Real Business Growth*
+    (`/blog/best-ppc-services-in-brampton-for-real-growth`), dated 10 Sept
+- Their 24 pictures were resized and converted to WebP under
+  `public/blog/<slug>/` — 6.5 MB → 494 KB and 10.4 MB → 652 KB.
+
+### Fixed
+
+- The Google Maps post linked to `cremsocial.com/services/seo` and
+  `cremsocial.com/services/google-business-profile`, neither of which is a route
+  on this site — both would have 404'd. Pointed at `/seo` and `/google-business`
+  in the source doc, so a re-publish keeps the fix.
+- Publishing now validates every internal link against the real routes and blog
+  slugs, so a guessed URL is caught before it goes live.
+
 ## 2026-09-09
 
 ### SEO
