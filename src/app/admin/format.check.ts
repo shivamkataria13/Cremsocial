@@ -65,6 +65,11 @@ assert.strictEqual(toHtml("- a\n- b"), "<ul>\n  <li>a</li>\n  <li>b</li>\n</ul>"
 assert.strictEqual(toHtml("**x** and [y](/seo)"), '<p><strong>x</strong> and <a href="/seo">y</a></p>');
 assert.strictEqual(autoFormat("Conclusion\n\nText."), "## Conclusion\n\nText.");
 
+// a table from a .docx stays a table
+const table = '<div class="overflow-x-auto">\n<table>\n<thead>\n<tr>\n<th>What to ask</th>\n</tr>\n</thead>\n' +
+  "<tbody>\n<tr>\n<td>Is there a contract?</td>\n</tr>\n</tbody>\n</table>\n</div>";
+assert.strictEqual(toHtml(table), table);
+
 // blogData.ts-style HTML written by hand goes through untouched
 const raw = `<h2>Step 1</h2>\n<p>Read <a href="/seo">our SEO page</a> and spend 5 to 10 minutes.</p>`;
 assert.strictEqual(toHtml(raw), raw);

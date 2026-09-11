@@ -26,6 +26,9 @@ date where it differs.
   in the source doc, so a re-publish keeps the fix.
 - Publishing now validates every internal link against the real routes and blog
   slugs, so a guessed URL is caught before it goes live.
+- Tables in a `.docx` are kept as tables. The PPC post's "what to ask" table had
+  been flattened into a run of paragraphs; it is now a real `<table>`, using the
+  `.blog-content table` styling the site already had.
 
 ## 2026-09-09
 
