@@ -33,6 +33,9 @@ pages — new slugs, titles and descriptions.
 - The `/seo` page's Service schema still described Google Business Profile
   optimization, a leftover of the duplication fixed on 9 Sept. Its name and
   description now match the page's new meta.
+- Brand name spelled `Cremsocial`, not `CremSocial`, in the meta title and
+  description on `/ppc-ads-agency-brampton` and `/google-maps-seo-brampton` —
+  the doc had the mixed-case version.
 
 ## 2026-09-11
 

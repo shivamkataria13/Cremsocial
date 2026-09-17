@@ -121,8 +121,8 @@ export default function AdsPage() {
   return (
     <>
       <Meta
-        title="PPC Services Brampton | Google & Meta Ads Agency | CremSocial"
-        description="Trusted PPC services in Brampton, Ontario for Google Ads, Meta Ads and paid advertising. CremSocial manages campaigns to generate qualified leads and improve ROI."
+        title="PPC Services Brampton | Google & Meta Ads Agency | Cremsocial"
+        description="Trusted PPC services in Brampton, Ontario for Google Ads, Meta Ads and paid advertising. Cremsocial manages campaigns to generate qualified leads and improve ROI."
         canonical="https://www.cremsocial.com/ppc-ads-agency-brampton"
         schema={schema}
       />

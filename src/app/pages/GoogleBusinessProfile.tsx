@@ -180,7 +180,7 @@ export default function GoogleBusinessProfilePage() {
   return (
     <>
       <Meta
-        title="Local SEO & Google Maps SEO Brampton | CremSocial"
+        title="Local SEO & Google Maps SEO Brampton | Cremsocial"
         description="Best Local SEO & Google Maps SEO Brampton services with expert GBP optimization. Cremsocial helps improve local rankings and generate qualified leads."
         canonical="https://www.cremsocial.com/google-maps-seo-brampton"
         schema={schema}
