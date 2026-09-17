@@ -18,7 +18,7 @@ assert.match(parsed.readTime, /^\d+ min read$/);
 assert.match(html, /^<h2>1\. Choosing an Agency Based Only on Price<\/h2>/); // "1\." unescaped
 assert.match(html, /<h2>FAQ<\/h2>/);
 assert.match(html, /<p><strong>1\. What is Google Ads PPC Management\?<\/strong><br>Google Ads PPC Management involves/);
-assert.match(html, /<a href="\/ads"><strong>ads management services<\/strong><\/a>/); // absolute → relative
+assert.match(html, /<a href="\/ppc-ads-agency-brampton"><strong>ads management services<\/strong><\/a>/); // absolute → relative
 assert.match(html, /<a href="\/">/);
 assert.match(html, /<a href="\/contact">Get in touch with CremSocial today<\/a>/);
 assert.ok(!html.includes("\\."), "no leftover escapes");
@@ -62,7 +62,7 @@ assert.ok(!/<a /.test(wordHtml), "a .docx paste has no links left to find");
 // ---- 3. Markers, lists, inline styling, raw-HTML passthrough --------------
 assert.strictEqual(toHtml("## Hi"), "<h2>Hi</h2>");
 assert.strictEqual(toHtml("- a\n- b"), "<ul>\n  <li>a</li>\n  <li>b</li>\n</ul>");
-assert.strictEqual(toHtml("**x** and [y](/seo)"), '<p><strong>x</strong> and <a href="/seo">y</a></p>');
+assert.strictEqual(toHtml("**x** and [y](/seo-service-brampton)"), '<p><strong>x</strong> and <a href="/seo-service-brampton">y</a></p>');
 assert.strictEqual(autoFormat("Conclusion\n\nText."), "## Conclusion\n\nText.");
 
 // a table from a .docx stays a table
@@ -71,7 +71,7 @@ const table = '<div class="overflow-x-auto">\n<table>\n<thead>\n<tr>\n<th>What t
 assert.strictEqual(toHtml(table), table);
 
 // blogData.ts-style HTML written by hand goes through untouched
-const raw = `<h2>Step 1</h2>\n<p>Read <a href="/seo">our SEO page</a> and spend 5 to 10 minutes.</p>`;
+const raw = `<h2>Step 1</h2>\n<p>Read <a href="/seo-service-brampton">our SEO page</a> and spend 5 to 10 minutes.</p>`;
 assert.strictEqual(toHtml(raw), raw);
 
 // bare URLs become links; cremsocial.com ones become internal; hrefs are never re-linked
@@ -80,8 +80,8 @@ assert.strictEqual(
   '<p>Visit <a href="/contact">www.cremsocial.com/contact</a> today.</p>'
 );
 assert.strictEqual(
-  toHtml("See www.google.com/ads for details"),
-  '<p>See <a href="https://www.google.com/ads">www.google.com/ads</a> for details</p>'
+  toHtml("See www.google.com/ppc-ads-agency-brampton for details"),
+  '<p>See <a href="https://www.google.com/ppc-ads-agency-brampton">www.google.com/ppc-ads-agency-brampton</a> for details</p>'
 );
 assert.strictEqual(toHtml("Budget 7 to 12 per day"), "<p>Budget 7 to 12 per day</p>");
 
@@ -107,13 +107,13 @@ assert.strictEqual(squashed.title, "Why Local SEO");
 // a lead image is lifted out, and neither it nor a link in the intro is mangled
 const withImage = parseDoc(
   "# Title\n\n![Focus Keyword: social media](/blog/x/image1.webp)\n\n" +
-    "Hiring a [social media marketing agency](https://www.cremsocial.com/social-media) makes sense.\n\n## First\n\nBody."
+    "Hiring a [social media marketing agency](https://www.cremsocial.com/social-media-marketing-agency-brampton) makes sense.\n\n## First\n\nBody."
 );
 assert.strictEqual(withImage.image, "/blog/x/image1.webp");
 assert.strictEqual(withImage.intro, "Hiring a social media marketing agency makes sense.");
 assert.strictEqual(
   withImage.introHtml,
-  'Hiring a <a href="/social-media">social media marketing agency</a> makes sense.'
+  'Hiring a <a href="/social-media-marketing-agency-brampton">social media marketing agency</a> makes sense.'
 );
 assert.strictEqual(
   toHtml("![Cremsocial office](/blog/x/i2.webp)"),

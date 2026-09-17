@@ -1,4 +1,10 @@
 {
+  "redirects": [
+    { "source": "/seo", "destination": "/seo-service-brampton", "permanent": true },
+    { "source": "/ads", "destination": "/ppc-ads-agency-brampton", "permanent": true },
+    { "source": "/social-media", "destination": "/social-media-marketing-agency-brampton", "permanent": true },
+    { "source": "/google-business", "destination": "/google-maps-seo-brampton", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

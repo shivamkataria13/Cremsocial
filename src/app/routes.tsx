@@ -42,19 +42,19 @@ export const router = createBrowserRouter([
         Component: ServicesPage,
       },
       {
-        path: "seo",
+        path: "seo-service-brampton",
         Component: SEOPage,
       },
       {
-        path: "ads",
+        path: "ppc-ads-agency-brampton",
         Component: AdsPage,
       },
       {
-        path: "social-media",
+        path: "social-media-marketing-agency-brampton",
         Component: SocialMediaPage,
       },
       {
-        path: "google-business",
+        path: "google-maps-seo-brampton",
         Component: GoogleBusinessProfilePage,
       },
       {

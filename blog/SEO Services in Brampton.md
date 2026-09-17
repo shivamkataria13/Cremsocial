@@ -24,7 +24,7 @@ For instance, if you are looking for "roofing contractor Brampton" or "dentist n
 
 Google is the place where people go to check any company they are considering buying goods or services from. Being among top Google results means being trusted and reliable.
 
-The work of an experienced [SEO specialist](https://www.cremsocial.com/seo) involves improving content, increasing user experience, fixing technical problems, creating backlinks to your site, and more. The more the website gets improved, the more search engines will be able to understand it, and people will enjoy using it.
+The work of an experienced [SEO specialist](https://www.cremsocial.com/seo-service-brampton) involves improving content, increasing user experience, fixing technical problems, creating backlinks to your site, and more. The more the website gets improved, the more search engines will be able to understand it, and people will enjoy using it.
 
 Users' ability to easily find useful information on the website will help them contact your business.
 

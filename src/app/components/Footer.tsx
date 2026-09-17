@@ -54,10 +54,10 @@ export function Footer() {
               </h5>
               <ul className="space-y-2">
                 {[
-                  { name: 'SEO', path: '/seo' },
-                  { name: 'Ads', path: '/ads' },
-                  { name: 'Social Media', path: '/social-media' },
-                  { name: 'Google Business Profile', path: '/google-business' }
+                  { name: 'SEO', path: '/seo-service-brampton' },
+                  { name: 'Ads', path: '/ppc-ads-agency-brampton' },
+                  { name: 'Social Media', path: '/social-media-marketing-agency-brampton' },
+                  { name: 'Google Business Profile', path: '/google-maps-seo-brampton' }
                 ].map((item) => (
                   <li key={item.name}>
                     <Link

@@ -10,7 +10,7 @@ const schema = [
     "name": "Google Business Profile Optimization",
     "description": "Get found on Google Maps with expert Google Business Profile optimization. Cremsocial offers local SEO services and GMB setup that bring calls, visits, and customers.",
     "provider": { "@type": "Organization", "name": "Cremsocial", "url": "https://www.cremsocial.com" },
-    "url": "https://www.cremsocial.com/google-business",
+    "url": "https://www.cremsocial.com/google-maps-seo-brampton",
     "areaServed": "CA"
   },
   {
@@ -180,9 +180,9 @@ export default function GoogleBusinessProfilePage() {
   return (
     <>
       <Meta
-        title="Google Business Profile Optimization & Management | Cremsocial"
-        description="Get found on Google Maps with expert Google Business Profile optimization. Cremsocial offers local SEO services and GMB setup that bring calls, visits, and customers."
-        canonical="https://www.cremsocial.com/google-business"
+        title="Local SEO & Google Maps SEO Brampton | CremSocial"
+        description="Best Local SEO & Google Maps SEO Brampton services with expert GBP optimization. Cremsocial helps improve local rankings and generate qualified leads."
+        canonical="https://www.cremsocial.com/google-maps-seo-brampton"
         schema={schema}
       />
       <div className="max-w-7xl mx-auto py-16 px-6">

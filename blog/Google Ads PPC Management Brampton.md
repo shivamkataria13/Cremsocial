@@ -14,7 +14,7 @@ Search campaigns display text advertisements when users search for specific keyw
 
 Search campaigns provide strong control over keywords, ad copy, locations, negative keywords, and bidding strategies. This makes them particularly useful for local businesses targeting high-intent searches.
 
-With professional [**Google Ads PPC Management**](https://www.cremsocial.com/ads), businesses can identify valuable keywords, create relevant advertisements, and optimize campaigns based on conversions rather than simply clicks.
+With professional [**Google Ads PPC Management**](https://www.cremsocial.com/ppc-ads-agency-brampton), businesses can identify valuable keywords, create relevant advertisements, and optimize campaigns based on conversions rather than simply clicks.
 
 ## What Is Performance Max?
 

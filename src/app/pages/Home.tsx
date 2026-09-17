@@ -206,25 +206,25 @@ const serviceTextBlocks = [
     title: "SEO That Brings Real Leads",
     body: "Our SEO and local SEO services get your business found by people who are ready to buy. We handle the technical work, the keywords, and the content so you climb the rankings and turn searches into customers, not just clicks.",
     accent: "from-indigo-500 to-violet-500",
-    path: "/seo",
+    path: "/seo-service-brampton",
   },
   {
     title: "Ads That Pay for Themselves",
     body: "From Google Ads to Meta ads and beyond, our paid ads management is built around return. We treat your budget like our own, cut what does not work, and scale what does, so every dollar brings back more than a dollar.",
     accent: "from-violet-500 to-fuchsia-500",
-    path: "/ads",
+    path: "/ppc-ads-agency-brampton",
   },
   {
     title: "Social Media That Turns Followers Into Income",
     body: "Our social media marketing services help businesses and creators build engaged audiences that actually buy. We focus on strategy and content that moves people from follower to customer, not vanity numbers.",
     accent: "from-fuchsia-500 to-pink-500",
-    path: "/social-media",
+    path: "/social-media-marketing-agency-brampton",
   },
   {
     title: "Google Business Profile Optimization",
     body: "Your Google Business Profile is often the first thing a local customer sees. We optimize it so you show up in Google Maps and local search, build trust with reviews, and turn that visibility into calls and visits.",
     accent: "from-indigo-500 to-blue-500",
-    path: "/google-business",
+    path: "/google-maps-seo-brampton",
   },
 ];
 

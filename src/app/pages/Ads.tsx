@@ -45,7 +45,7 @@ const schema = [
     "name": "Paid Ads Management",
     "description": "Stop wasting ad spend. Cremsocial is a Google Ads and PPC agency managing paid ads, Meta ads, TikTok ads, and search engine marketing that brings real leads.",
     "provider": { "@type": "Organization", "name": "Crem Social", "url": "https://www.cremsocial.com" },
-    "url": "https://www.cremsocial.com/ads",
+    "url": "https://www.cremsocial.com/ppc-ads-agency-brampton",
     "areaServed": "CA"
   },
   {
@@ -121,9 +121,9 @@ export default function AdsPage() {
   return (
     <>
       <Meta
-        title="Google Ads, Meta Ads & PPC Agency | Paid Ads Management | Cremsocial"
-        description="Stop wasting ad spend. Cremsocial is a Google Ads and PPC agency managing paid ads, Meta ads, TikTok ads, and search engine marketing that brings real leads."
-        canonical="https://www.cremsocial.com/ads"
+        title="PPC Services Brampton | Google & Meta Ads Agency | CremSocial"
+        description="Trusted PPC services in Brampton, Ontario for Google Ads, Meta Ads and paid advertising. CremSocial manages campaigns to generate qualified leads and improve ROI."
+        canonical="https://www.cremsocial.com/ppc-ads-agency-brampton"
         schema={schema}
       />
       <div className="max-w-7xl mx-auto py-16 px-6">

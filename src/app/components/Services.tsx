@@ -17,7 +17,7 @@ const services = [
     ],
     tagline: 'No mystical "SEO secrets." We show you exactly what we\'re changing and what it\'s supposed to do.',
     gradient: "from-purple-500 to-blue-500",
-    path: "/seo",
+    path: "/seo-service-brampton",
     ctaLabel: "Learn About Our SEO Services",
   },
   {
@@ -33,7 +33,7 @@ const services = [
     ],
     tagline: "We run Meta (FB/IG) and Google ads with one simple rule: if it can't justify its cost, it doesn't run.",
     gradient: "from-blue-500 to-cyan-500",
-    path: "/ads",
+    path: "/ppc-ads-agency-brampton",
     ctaLabel: "Learn About Our Ads Services",
   },
   {
@@ -49,7 +49,7 @@ const services = [
     ],
     tagline: "We make social media a lead and trust machine, not a second full-time job.",
     gradient: "from-pink-500 to-orange-500",
-    path: "/social-media",
+    path: "/social-media-marketing-agency-brampton",
     ctaLabel: "Learn About Social Media Management",
   },
   {

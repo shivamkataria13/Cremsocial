@@ -45,7 +45,7 @@ If your business serves multiple cities, create dedicated pages for each service
 
 ### 4. Focus on SEO for Small Businesses
 
-Effective [SEO for small businesses](https://www.cremsocial.com/seo) helps compete with larger brands by targeting local customers instead of broad national audiences.
+Effective [SEO for small businesses](https://www.cremsocial.com/seo-service-brampton) helps compete with larger brands by targeting local customers instead of broad national audiences.
 
 Small businesses should focus on:
 - Local citations
@@ -76,7 +76,7 @@ Topics related to local events, community involvement, or customer questions can
 
 ### 8. Work with a Digital Marketing Agency for Local Businesses
 
-Partnering with a [Digital Marketing Agency for Local Businesses](https://www.cremsocial.com/seo) can simplify your SEO efforts. Experienced professionals understand local ranking factors and can develop customized strategies that improve visibility, generate leads, and support long-term business growth.
+Partnering with a [Digital Marketing Agency for Local Businesses](https://www.cremsocial.com/seo-service-brampton) can simplify your SEO efforts. Experienced professionals understand local ranking factors and can develop customized strategies that improve visibility, generate leads, and support long-term business growth.
 
 Professional local SEO services often include keyword research, technical SEO, Google Business Profile optimization, citation management, content creation, and performance tracking.
 

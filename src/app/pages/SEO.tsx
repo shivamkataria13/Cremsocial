@@ -42,10 +42,10 @@ const schema = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Google Business Profile Optimization",
-    "description": "Get found on Google Maps with expert Google Business Profile optimization. Cremsocial offers local SEO services and GMB setup that bring calls, visits, and customers.",
+    "name": "SEO Services in Brampton",
+    "description": "Looking for SEO services in Brampton, Ontario? Cremsocial helps businesses improve Google rankings, attract traffic, & generate more leads with proven SEO strategies.",
     "provider": { "@type": "Organization", "name": "Crem Social", "url": "https://www.cremsocial.com" },
-    "url": "https://www.cremsocial.com/seo",
+    "url": "https://www.cremsocial.com/seo-service-brampton",
     "areaServed": "CA"
   },
   {
@@ -121,9 +121,9 @@ export default function GoogleBusinessProfilePage() {
   return (
     <>
       <Meta
-        title="Google Business Profile Optimization & Management | Cremsocial"
-        description="Get found on Google Maps with expert Google Business Profile optimization. Cremsocial offers local SEO services and GMB setup that bring calls, visits, and customers."
-        canonical="https://www.cremsocial.com/seo"
+        title="SEO Services in Brampton, ON | SEO Agency | Cremsocial"
+        description="Looking for SEO services in Brampton, Ontario? Cremsocial helps businesses improve Google rankings, attract traffic, & generate more leads with proven SEO strategies."
+        canonical="https://www.cremsocial.com/seo-service-brampton"
         schema={schema}
       />
       <div className="max-w-7xl mx-auto py-16 px-6">

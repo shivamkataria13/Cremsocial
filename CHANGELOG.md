@@ -5,6 +5,35 @@ All notable changes to the Cremsocial site. Newest first.
 Dates are the day the change was made. Blog entries list the post's own publish
 date where it differs.
 
+## 2026-09-17
+
+### SEO
+
+Applied `New Meta Data Suggestion (Cremsocial).docx` across the four service
+pages — new slugs, titles and descriptions.
+
+| Page | Old URL | New URL |
+| --- | --- | --- |
+| SEO | `/seo` | `/seo-service-brampton` |
+| Paid ads | `/ads` | `/ppc-ads-agency-brampton` |
+| Social media | `/social-media` | `/social-media-marketing-agency-brampton` |
+| Google Business | `/google-business` | `/google-maps-seo-brampton` |
+
+- New meta titles and descriptions on all four, as written in the doc.
+- **301 redirects** from each old URL to its new one in `vercel.json`, so the
+  pages Google has already indexed, and any existing backlinks, keep their
+  ranking instead of hitting a 404.
+- All 122 references to the old paths updated in one pass: routes, canonicals,
+  schema `url`s, the header and footer navigation, the home and services pages,
+  every in-post link across the blog, the sitemap, `index.html`'s breadcrumb
+  schema, the blog source docs in `blog/`, and the admin Guide's list of
+  linkable pages. Blog slugs that merely start the same way — for example
+  `/blog/seo-services-brampton-local-businesses` — were left alone.
+- `lastmod` bumped to today for the four pages in `sitemap.xml`.
+- The `/seo` page's Service schema still described Google Business Profile
+  optimization, a leftover of the duplication fixed on 9 Sept. Its name and
+  description now match the page's new meta.
+
 ## 2026-09-11
 
 ### Added

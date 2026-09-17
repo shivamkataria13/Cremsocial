@@ -64,10 +64,10 @@ export function Header() {
   ];
 
   const serviceOptions = [
-    { name: 'SEO', path: '/seo' },
-    { name: 'Ads', path: '/ads' },
-    { name: 'Social Media', path: '/social-media' },
-    { name: 'Google Business Profile', path: '/google-business' },
+    { name: 'SEO', path: '/seo-service-brampton' },
+    { name: 'Ads', path: '/ppc-ads-agency-brampton' },
+    { name: 'Social Media', path: '/social-media-marketing-agency-brampton' },
+    { name: 'Google Business Profile', path: '/google-maps-seo-brampton' },
   ];
 
   // Variants for the whole header container
@@ -128,12 +128,12 @@ export function Header() {
                   {item.type === 'dropdown' ? (
                     <>
                       <button
-                        className={`text-gray-800 hover:text-indigo-600 transition-colors relative group font-medium flex items-center gap-2 ${location.pathname.startsWith('/seo') || location.pathname.startsWith('/ads') || location.pathname.startsWith('/social-media') || location.pathname.startsWith('/google-business') ? 'text-indigo-600' : ''}`}
+                        className={`text-gray-800 hover:text-indigo-600 transition-colors relative group font-medium flex items-center gap-2 ${location.pathname.startsWith('/seo-service-brampton') || location.pathname.startsWith('/ppc-ads-agency-brampton') || location.pathname.startsWith('/social-media-marketing-agency-brampton') || location.pathname.startsWith('/google-maps-seo-brampton') ? 'text-indigo-600' : ''}`}
                         style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 500 }}
                       >
                         {item.name}
                         <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesDropdown ? 'rotate-180' : ''}`} />
-                        <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-300 ${location.pathname.startsWith('/seo') || location.pathname.startsWith('/ads') || location.pathname.startsWith('/social-media') || location.pathname.startsWith('/google-business') ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                        <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-300 ${location.pathname.startsWith('/seo-service-brampton') || location.pathname.startsWith('/ppc-ads-agency-brampton') || location.pathname.startsWith('/social-media-marketing-agency-brampton') || location.pathname.startsWith('/google-maps-seo-brampton') ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                       </button>
                       <AnimatePresence>
                         {servicesDropdown && (
@@ -215,7 +215,7 @@ export function Header() {
                     item.type === 'dropdown' ? (
                       <div key={item.name}>
                         <button
-                          className={`text-gray-800 hover:text-indigo-600 transition-colors font-medium w-full text-left flex items-center gap-2 ${location.pathname.startsWith('/seo') || location.pathname.startsWith('/ads') || location.pathname.startsWith('/social-media') || location.pathname.startsWith('/google-business') ? 'text-indigo-600' : ''}`}
+                          className={`text-gray-800 hover:text-indigo-600 transition-colors font-medium w-full text-left flex items-center gap-2 ${location.pathname.startsWith('/seo-service-brampton') || location.pathname.startsWith('/ppc-ads-agency-brampton') || location.pathname.startsWith('/social-media-marketing-agency-brampton') || location.pathname.startsWith('/google-maps-seo-brampton') ? 'text-indigo-600' : ''}`}
                           style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 500 }}
                           onClick={() => setServicesDropdown(!servicesDropdown)}
                         >

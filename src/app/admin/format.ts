@@ -15,7 +15,7 @@
 /** Docs exports escape punctuation: "1\. Thing" */
 const unescape = (s: string) => s.replace(/\\([.\-*_#+])/g, "$1");
 
-/** Keep internal links inside the SPA router: cremsocial.com/ads -> /ads */
+/** Keep internal links inside the SPA router: cremsocial.com/ppc-ads-agency-brampton -> /ppc-ads-agency-brampton */
 const href = (url: string) => url.replace(/^https?:\/\/(www\.)?cremsocial\.com\/?/i, "/");
 
 const TOKEN = /@@LINK(\d+)@@/g;

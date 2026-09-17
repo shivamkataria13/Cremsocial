@@ -45,7 +45,7 @@ const schema = [
     "name": "Social Media Marketing",
     "description": "Social media marketing services that turn followers into income. Cremsocial is a social media agency offering management, content creation, and strategy that converts.",
     "provider": { "@type": "Organization", "name": "Crem Social", "url": "https://www.cremsocial.com" },
-    "url": "https://www.cremsocial.com/social-media",
+    "url": "https://www.cremsocial.com/social-media-marketing-agency-brampton",
     "areaServed": "CA"
   },
   {
@@ -121,9 +121,9 @@ export default function SocialMediaPage() {
   return (
     <>
       <Meta
-        title="Social Media Marketing Services & Management Agency | Cremsocial"
-        description="Social media marketing services that turn followers into income. Cremsocial is a social media agency offering management, content creation, and strategy that converts."
-        canonical="https://www.cremsocial.com/social-media"
+        title="Social Media Marketing Agency in Brampton | Cremsocial"
+        description="Cremsocial is the best social media marketing agency in Brampton, helping businesses boost online visibility and leads with strategic social media campaigns."
+        canonical="https://www.cremsocial.com/social-media-marketing-agency-brampton"
         schema={schema}
       />
       <div className="max-w-7xl mx-auto py-16 px-6">

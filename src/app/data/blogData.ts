@@ -413,7 +413,7 @@ export const blogPosts: BlogPost[] = [
       <p>A reliable digital marketing agency provides a wide range of solutions tailored to different business needs, including:</p>
       <ul>
         <li>Search Engine Optimization (SEO)</li>
-        <li><a href="/ads" class="text-indigo-600 underline">Google Ads and Pay-Per-Click (PPC) Advertising</a></li>
+        <li><a href="/ppc-ads-agency-brampton" class="text-indigo-600 underline">Google Ads and Pay-Per-Click (PPC) Advertising</a></li>
         <li>Social Media Marketing</li>
         <li>Content Marketing</li>
         <li>Email Marketing</li>
@@ -457,7 +457,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2026-08-11",
     intro: "Social media continues to be one of the most effective ways for small businesses to connect with customers, build brand awareness, and generate leads. In 2026, success isn't about being active on every platform — it's about focusing on the channels where your audience spends the most time.",
     content: `
-      <p>However, with so many platforms available, choosing the right ones can feel overwhelming. Many businesses also rely on professional <a href="/social-media" class="text-indigo-600 underline">social media services</a> to create consistent content and manage their online presence effectively.</p>
+      <p>However, with so many platforms available, choosing the right ones can feel overwhelming. Many businesses also rely on professional <a href="/social-media-marketing-agency-brampton" class="text-indigo-600 underline">social media services</a> to create consistent content and manage their online presence effectively.</p>
 
       <h2>Facebook</h2>
       <p>Facebook remains one of the best platforms for small businesses. It offers a wide audience, local business features, and powerful advertising tools. Businesses can share updates, promote services, collect reviews, and communicate directly with customers through Messenger. Whether you own a local service business, restaurant, or retail store, Facebook is still an excellent place to build trust and attract new customers.</p>
@@ -522,7 +522,7 @@ export const blogPosts: BlogPost[] = [
 
       <h2>3. Expecting Immediate Results</h2>
       <p>Another common mistake is expecting Google Ads to generate excellent results immediately. Although paid advertising can produce traffic quickly, successful campaigns often require testing and optimization.</p>
-      <p>An experienced provider of <a href="/ads" class="text-indigo-600 underline">ads management services</a> will monitor campaign performance and make adjustments based on real data. Keywords, advertisements, bidding strategies, locations, and landing pages may all need refinement over time.</p>
+      <p>An experienced provider of <a href="/ppc-ads-agency-brampton" class="text-indigo-600 underline">ads management services</a> will monitor campaign performance and make adjustments based on real data. Keywords, advertisements, bidding strategies, locations, and landing pages may all need refinement over time.</p>
 
       <h2>4. Ignoring Conversion Tracking</h2>
       <p>Getting clicks is not the same as getting customers. Without proper conversion tracking, businesses may not know which campaigns, keywords, or advertisements are generating leads.</p>
@@ -571,7 +571,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Search campaigns provide strong control over keywords, ad copy, locations, negative keywords, and bidding strategies. This makes them particularly useful for local businesses targeting high-intent searches.</p>
 
-      <p>With professional <a href="/ads"><strong>Google Ads PPC Management</strong></a>, businesses can identify valuable keywords, create relevant advertisements, and optimize campaigns based on conversions rather than simply clicks.</p>
+      <p>With professional <a href="/ppc-ads-agency-brampton"><strong>Google Ads PPC Management</strong></a>, businesses can identify valuable keywords, create relevant advertisements, and optimize campaigns based on conversions rather than simply clicks.</p>
 
       <h2>What Is Performance Max?</h2>
 
@@ -682,7 +682,7 @@ export const blogPosts: BlogPost[] = [
 
       <p><strong>3. Create Location-Specific Pages</strong><br>If your business serves multiple cities, create dedicated pages for each service area. These pages should contain unique content, customer testimonials, and local information to improve search relevance.</p>
 
-      <p><strong>4. Focus on SEO for Small Businesses</strong><br>Effective <a href="/seo">SEO for small businesses</a> helps compete with larger brands by targeting local customers instead of broad national audiences.</p>
+      <p><strong>4. Focus on SEO for Small Businesses</strong><br>Effective <a href="/seo-service-brampton">SEO for small businesses</a> helps compete with larger brands by targeting local customers instead of broad national audiences.</p>
 
       <p>Small businesses should focus on:</p>
       <ul>
@@ -707,7 +707,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Topics related to local events, community involvement, or customer questions can generate additional traffic and improve engagement.</p>
 
-      <p><strong>8. Work with a Digital Marketing Agency for Local Businesses</strong><br>Partnering with a <a href="/seo">Digital Marketing Agency for Local Businesses</a> can simplify your SEO efforts. Experienced professionals understand local ranking factors and can develop customized strategies that improve visibility, generate leads, and support long-term business growth.</p>
+      <p><strong>8. Work with a Digital Marketing Agency for Local Businesses</strong><br>Partnering with a <a href="/seo-service-brampton">Digital Marketing Agency for Local Businesses</a> can simplify your SEO efforts. Experienced professionals understand local ranking factors and can develop customized strategies that improve visibility, generate leads, and support long-term business growth.</p>
 
       <p>Professional local SEO services often include keyword research, technical SEO, Google Business Profile optimization, citation management, content creation, and performance tracking.</p>
 
@@ -787,7 +787,7 @@ export const blogPosts: BlogPost[] = [
 
       <h2>Conclusion</h2>
 
-      <p>Ranking higher on Google Maps doesn't happen overnight, but consistent optimization delivers long-term results. By improving your Google Business Profile, earning customer reviews, maintaining accurate business information, creating quality local content, and investing in professional <a href="/seo">local seo services</a>, your business can achieve stronger online visibility.</p>
+      <p>Ranking higher on Google Maps doesn't happen overnight, but consistent optimization delivers long-term results. By improving your Google Business Profile, earning customer reviews, maintaining accurate business information, creating quality local content, and investing in professional <a href="/seo-service-brampton">local seo services</a>, your business can achieve stronger online visibility.</p>
 
       <p>Whether you're just starting or looking to improve your current strategy, Local SEO Brampton can help you reach more local customers, generate qualified leads, and grow your business in a competitive market.</p>
 
@@ -834,7 +834,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Google is the place where people go to check any company they are considering buying goods or services from. Being among top Google results means being trusted and reliable.</p>
 
-      <p>The work of an experienced <a href="/seo">SEO specialist</a> involves improving content, increasing user experience, fixing technical problems, creating backlinks to your site, and more. The more the website gets improved, the more search engines will be able to understand it, and people will enjoy using it.</p>
+      <p>The work of an experienced <a href="/seo-service-brampton">SEO specialist</a> involves improving content, increasing user experience, fixing technical problems, creating backlinks to your site, and more. The more the website gets improved, the more search engines will be able to understand it, and people will enjoy using it.</p>
 
       <p>Users' ability to easily find useful information on the website will help them contact your business.</p>
 
@@ -891,7 +891,7 @@ export const blogPosts: BlogPost[] = [
     targetAudience: "For SMBs",
     publishDate: "2026-08-20",
     intro: "Today, there is no need to read newspapers or ask others for information about businesses in the local market. People tend to look for businesses online. Whether it's a restaurant, plumber, dentist, or retailer, the first place people go looking is Google. This is the reason local SEO services have now become an essential marketing tool for those businesses which want to target their local audience. Small business can now compete against bigger players using the service because it provide cost-effective ways to rank well in local searches and Google maps.",
-    introHtml: "Today, there is no need to read newspapers or ask others for information about businesses in the local market. People tend to look for businesses online. Whether it's a restaurant, plumber, dentist, or retailer, the first place people go looking is Google. This is the reason <a href=\"/google-business\">local SEO services</a> have now become an essential marketing tool for those businesses which want to target their local audience. Small business can now compete against bigger players using the service because it provide cost-effective ways to rank well in local searches and Google maps.",
+    introHtml: "Today, there is no need to read newspapers or ask others for information about businesses in the local market. People tend to look for businesses online. Whether it's a restaurant, plumber, dentist, or retailer, the first place people go looking is Google. This is the reason <a href=\"/google-maps-seo-brampton\">local SEO services</a> have now become an essential marketing tool for those businesses which want to target their local audience. Small business can now compete against bigger players using the service because it provide cost-effective ways to rank well in local searches and Google maps.",
     content: `
       <h2>What Are Local SEO Services?</h2>
 
@@ -1139,7 +1139,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2026-09-03",
     image: "/blog/top-10-google-ads-ppc-agencies-brampton/image9.webp",
     intro: "Brampton is one of the fastest-growing cities in Canada, and with that growth comes fierce competition for local customers. Whether you run a clinic, a home services company, an e-commerce store, or a professional practice, showing up at the top of Google when someone searches for what you offer can make or break your month. That's where Google Ads and PPC management come in - and where choosing the right agency matters just as much as the ad budget itself. We put together this list after looking at how different Brampton-area agencies position themselves, what services they offer, and what actually matters to a business owner deciding who to trust with their ad spend: transparency, measurable ROI, local market knowledge, and honest communication. Here are ten agencies worth knowing about if you're searching for PPC management in Brampton.",
-    introHtml: "Brampton is one of the fastest-growing cities in Canada, and with that growth comes fierce competition for local customers. Whether you run a clinic, a home services company, an e-commerce store, or a professional practice, showing up at the top of Google when someone searches for what you offer can make or break your month. That's where <a href=\"/ads\">Google Ads and PPC management</a> come in - and where choosing the right agency matters just as much as the ad budget itself. We put together this list after looking at how different Brampton-area agencies position themselves, what services they offer, and what actually matters to a business owner deciding who to trust with their ad spend: transparency, measurable ROI, local market knowledge, and honest communication. Here are ten agencies worth knowing about if you're searching for PPC management in Brampton.",
+    introHtml: "Brampton is one of the fastest-growing cities in Canada, and with that growth comes fierce competition for local customers. Whether you run a clinic, a home services company, an e-commerce store, or a professional practice, showing up at the top of Google when someone searches for what you offer can make or break your month. That's where <a href=\"/ppc-ads-agency-brampton\">Google Ads and PPC management</a> come in - and where choosing the right agency matters just as much as the ad budget itself. We put together this list after looking at how different Brampton-area agencies position themselves, what services they offer, and what actually matters to a business owner deciding who to trust with their ad spend: transparency, measurable ROI, local market knowledge, and honest communication. Here are ten agencies worth knowing about if you're searching for PPC management in Brampton.",
     content: `
       <h2>1. Cremsocial - Best Overall Google Ads & PPC Agency in Brampton</h2>
 
@@ -1156,9 +1156,9 @@ export const blogPosts: BlogPost[] = [
       <p><strong>Their core services include:</strong></p>
       <ul>
         <li><strong>Google Ads & Paid Advertising</strong> – Strategic Google Ads management and paid advertising across Google, Meta, TikTok, and Pinterest, designed to reach the right audience, generate qualified leads, and maximize measurable return on ad spend.</li>
-        <li><strong>SEO & Local SEO Services </strong>– Data-driven <a href="/seo">SEO services</a> focused on site structure, keyword research, on-page SEO, technical optimization, and valuable content to improve organic rankings, increase visibility, and attract searches that convert into customers.</li>
-        <li><strong>Google Business Profile Optimization </strong>– Professional <a href="/google-business">Google Business Profile optimization</a> to improve local search visibility, strengthen your presence in the Google Map Pack, and help nearby customers discover and contact your business.</li>
-        <li><strong>Social Media Marketing</strong> – Results-focused <a href="/social-media">social media marketing services</a> covering profile optimization, content strategy, content pillars, and consistent posting to increase engagement, website traffic, inquiries, replies, and DMs.</li>
+        <li><strong>SEO & Local SEO Services </strong>– Data-driven <a href="/seo-service-brampton">SEO services</a> focused on site structure, keyword research, on-page SEO, technical optimization, and valuable content to improve organic rankings, increase visibility, and attract searches that convert into customers.</li>
+        <li><strong>Google Business Profile Optimization </strong>– Professional <a href="/google-maps-seo-brampton">Google Business Profile optimization</a> to improve local search visibility, strengthen your presence in the Google Map Pack, and help nearby customers discover and contact your business.</li>
+        <li><strong>Social Media Marketing</strong> – Results-focused <a href="/social-media-marketing-agency-brampton">social media marketing services</a> covering profile optimization, content strategy, content pillars, and consistent posting to increase engagement, website traffic, inquiries, replies, and DMs.</li>
       </ul>
 
       <p>That range means a Brampton business can start with a single PPC campaign and later add SEO, social, or a website refresh without switching agencies or losing continuity on tracking and reporting.</p>
@@ -1291,7 +1291,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2026-09-03",
     image: "/blog/social-media-marketing-agency-small-businesses/image1.webp",
     intro: "Social media has become one of the most affordable ways for a small business to reach new customers, but running it well takes more time and skill than most owners have to spare. That's usually the point where hiring a social media marketing agency starts to make sense. The problem is that the industry is full of agencies promising \"growth\" and \"engagement\" without ever explaining how that connects to actual sales. If you're evaluating agencies for the first time, it helps to know exactly what separates a partner who will move your business forward from one who will just keep you busy with posts. Here's what to look for.",
-    introHtml: "Social media has become one of the most affordable ways for a small business to reach new customers, but running it well takes more time and skill than most owners have to spare. That's usually the point where hiring a <a href=\"/social-media\">social media marketing agency</a> starts to make sense. The problem is that the industry is full of agencies promising \"growth\" and \"engagement\" without ever explaining how that connects to actual sales. If you're evaluating agencies for the first time, it helps to know exactly what separates a partner who will move your business forward from one who will just keep you busy with posts. Here's what to look for.",
+    introHtml: "Social media has become one of the most affordable ways for a small business to reach new customers, but running it well takes more time and skill than most owners have to spare. That's usually the point where hiring a <a href=\"/social-media-marketing-agency-brampton\">social media marketing agency</a> starts to make sense. The problem is that the industry is full of agencies promising \"growth\" and \"engagement\" without ever explaining how that connects to actual sales. If you're evaluating agencies for the first time, it helps to know exactly what separates a partner who will move your business forward from one who will just keep you busy with posts. Here's what to look for.",
     content: `
       <h2>Why Small Businesses Struggle to Manage Social Media Alone</h2>
 
@@ -1325,7 +1325,7 @@ export const blogPosts: BlogPost[] = [
 
       <h2>5. Platform Expertise Where Your Customers Actually Are</h2>
 
-      <p>Not every platform deserves equal attention. A <a href="/ads">B2B marketing company</a> may get far more value from LinkedIn than TikTok, while a local retail business might see the opposite. An agency that pushes you onto every platform at once, rather than focusing on where your specific audience spends time, is often optimizing for their own workload rather than your results.</p>
+      <p>Not every platform deserves equal attention. A <a href="/ppc-ads-agency-brampton">B2B marketing company</a> may get far more value from LinkedIn than TikTok, while a local retail business might see the opposite. An agency that pushes you onto every platform at once, rather than focusing on where your specific audience spends time, is often optimizing for their own workload rather than your results.</p>
 
       <p>Ask which platforms they'd recommend for your business specifically, and why. A thoughtful answer here is usually a good signal of how they'll approach the rest of the strategy.</p>
 
@@ -1366,7 +1366,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Social media marketing can be one of the highest-value channels available to a small business, but only when it's handled by people who treat it as a growth strategy rather than a content-scheduling service. The agencies worth hiring are the ones who start with your business goals, report on outcomes that actually matter, and are honest with you about what's working and what isn't.</p>
 
-      <p>At <a href="/">Cremsocial</a>, this is exactly the approach we take with small businesses and creators across the GTA. We build <a href="/social-media">social media marketing</a> strategies around clicks, replies, DMs, and actual business growth - not vanity numbers and we'll tell you honestly if something isn't working rather than hide behind a busy-looking report. If you're evaluating agencies and want a straightforward second opinion, get a <a href="/contact">free marketing audit</a> from <a href="/">Cremsocial</a> and see exactly where your social media stands.</p>
+      <p>At <a href="/">Cremsocial</a>, this is exactly the approach we take with small businesses and creators across the GTA. We build <a href="/social-media-marketing-agency-brampton">social media marketing</a> strategies around clicks, replies, DMs, and actual business growth - not vanity numbers and we'll tell you honestly if something isn't working rather than hide behind a busy-looking report. If you're evaluating agencies and want a straightforward second opinion, get a <a href="/contact">free marketing audit</a> from <a href="/">Cremsocial</a> and see exactly where your social media stands.</p>
 
       <h2>FAQs</h2>
 
@@ -1398,15 +1398,15 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2026-09-08",
     image: "/blog/best-google-maps-seo-agency-in-brampton-for-local-businesses/image4.webp",
     intro: "Brampton is one of the fastest-growing cities in Canada, and that growth has turned the local map pack into one of the most competitive pieces of digital real estate in the GTA. When a resident searches for a plumber, a dentist, or a restaurant \"near me,\" the three listings that show up in Google Maps get the call — everyone else gets scrolled past. That's exactly why so many business owners start looking for a Google Maps SEO Brampton specialist instead of trying to fix their Google Business Profile on their own. The problem is that \"SEO agency\" has become a crowded label, and not every local SEO agency in Brampton actually understands how the map pack works. To save you the research, we pulled together this list of ten agencies worth knowing about if you're trying to get found on Google Maps, improve your Google Business Profile SEO Brampton, or build out a broader local search marketing Brampton strategy. We're including ourselves on this list because, frankly, we think we belong here — but we've tried to describe every agency fairly based on what they actually offer.",
-    introHtml: "Brampton is one of the fastest-growing cities in Canada, and that growth has turned the local map pack into one of the most competitive pieces of digital real estate in the GTA. When a resident searches for a plumber, a dentist, or a restaurant \"near me,\" the three listings that show up in Google Maps get the call — everyone else gets scrolled past. That's exactly why so many business owners start looking for a <a href=\"/google-business\"><strong>Google Maps SEO Brampton</strong></a> specialist instead of trying to fix their Google Business Profile on their own. The problem is that \"SEO agency\" has become a crowded label, and not every local SEO agency in Brampton actually understands how the map pack works. To save you the research, we pulled together this list of ten agencies worth knowing about if you're trying to get found on Google Maps, improve your Google Business Profile SEO Brampton, or build out a broader local search marketing Brampton strategy. We're including ourselves on this list because, frankly, we think we belong here — but we've tried to describe every agency fairly based on what they actually offer.",
+    introHtml: "Brampton is one of the fastest-growing cities in Canada, and that growth has turned the local map pack into one of the most competitive pieces of digital real estate in the GTA. When a resident searches for a plumber, a dentist, or a restaurant \"near me,\" the three listings that show up in Google Maps get the call — everyone else gets scrolled past. That's exactly why so many business owners start looking for a <a href=\"/google-maps-seo-brampton\"><strong>Google Maps SEO Brampton</strong></a> specialist instead of trying to fix their Google Business Profile on their own. The problem is that \"SEO agency\" has become a crowded label, and not every local SEO agency in Brampton actually understands how the map pack works. To save you the research, we pulled together this list of ten agencies worth knowing about if you're trying to get found on Google Maps, improve your Google Business Profile SEO Brampton, or build out a broader local search marketing Brampton strategy. We're including ourselves on this list because, frankly, we think we belong here — but we've tried to describe every agency fairly based on what they actually offer.",
     content: `
       <h2>1. Cremsocial - Best Google Maps SEO Agency</h2>
 
       <img src="/blog/best-google-maps-seo-agency-in-brampton-for-local-businesses/image11.webp" alt="Cremsocial - Best Google Maps SEO Agency" loading="lazy">
 
-      <p>Cremsocial is a Brampton-based digital marketing agency built around one idea: marketing should produce numbers you can actually check, not vanity metrics. For local businesses trying to win the map pack, Cremsocial focuses on <a href="/google-business">Google Business Profile optimization</a> — cleaning up categories, adding the tracking needed to see which searches turn into calls, and fixing the technical site issues that quietly hurt local rankings. What sets the agency apart from a typical <strong>local SEO agency in Brampton</strong> is the reporting style: plain-English updates on what changed and what it produced, rather than a dashboard full of impressions nobody can act on.</p>
+      <p>Cremsocial is a Brampton-based digital marketing agency built around one idea: marketing should produce numbers you can actually check, not vanity metrics. For local businesses trying to win the map pack, Cremsocial focuses on <a href="/google-maps-seo-brampton">Google Business Profile optimization</a> — cleaning up categories, adding the tracking needed to see which searches turn into calls, and fixing the technical site issues that quietly hurt local rankings. What sets the agency apart from a typical <strong>local SEO agency in Brampton</strong> is the reporting style: plain-English updates on what changed and what it produced, rather than a dashboard full of impressions nobody can act on.</p>
 
-      <p>Cremsocial also runs <a href="/seo">SEO and paid ads</a> as part of the same engine, so a Google Maps push can be paired with landing pages and ad campaigns built to convert the extra visibility into leads. For creators and small teams who want more than a one-off audit, the agency also offers shadow operating support to turn an audience into recurring income. If you want a second opinion on your current setup, they offer a <a href="/contact">free marketing audit</a> before you commit to anything.</p>
+      <p>Cremsocial also runs <a href="/seo-service-brampton">SEO and paid ads</a> as part of the same engine, so a Google Maps push can be paired with landing pages and ad campaigns built to convert the extra visibility into leads. For creators and small teams who want more than a one-off audit, the agency also offers shadow operating support to turn an audience into recurring income. If you want a second opinion on your current setup, they offer a <a href="/contact">free marketing audit</a> before you commit to anything.</p>
 
       <h2>2. MarketingFlow</h2>
 
@@ -1535,18 +1535,18 @@ export const blogPosts: BlogPost[] = [
 
       <img src="/blog/best-ppc-services-in-brampton-for-real-growth/image1.webp" alt="Cremsocial - Best PPC Marketing Agency in Brampton" loading="lazy">
 
-      <p>Cremsocial is a Brampton-based digital marketing agency built for local businesses and creators who are tired of confusing reports and unmet promises. Their <a href="/ads">paid ads service</a> runs on one simple rule: every dollar has to justify itself, or the ad gets killed. Campaigns start with a clear goal (calls, bookings, or sales), move into fast-loading landing pages that match the ad's promise, and end in monthly reports that a non-marketer can actually read.</p>
+      <p>Cremsocial is a Brampton-based digital marketing agency built for local businesses and creators who are tired of confusing reports and unmet promises. Their <a href="/ppc-ads-agency-brampton">paid ads service</a> runs on one simple rule: every dollar has to justify itself, or the ad gets killed. Campaigns start with a clear goal (calls, bookings, or sales), move into fast-loading landing pages that match the ad's promise, and end in monthly reports that a non-marketer can actually read.</p>
 
-      <p>What sets them apart from a lot of the agencies further down this list is that PPC rarely runs alone — it's usually paired with their <a href="/seo">SEO and local visibility work</a> and <a href="/google-business">Google Business Profile optimization</a>, so paid clicks and organic search reinforce each other instead of competing for the same budget. They also run a unique <a href="/shadow-operating">shadow-operating program for creators</a>, building the offers, funnels, and ad infrastructure behind the scenes while the creator stays the face of the brand.</p>
+      <p>What sets them apart from a lot of the agencies further down this list is that PPC rarely runs alone — it's usually paired with their <a href="/seo-service-brampton">SEO and local visibility work</a> and <a href="/google-maps-seo-brampton">Google Business Profile optimization</a>, so paid clicks and organic search reinforce each other instead of competing for the same budget. They also run a unique <a href="/shadow-operating">shadow-operating program for creators</a>, building the offers, funnels, and ad infrastructure behind the scenes while the creator stays the face of the brand.</p>
 
       <p><strong>Best for:</strong> Local service businesses and creators who want one accountable team instead of juggling separate vendors for ads, SEO, and social.</p>
 
       <p><strong>Everything Cremsocial Actually Offers</strong><br>Cremsocial isn't a one-service shop - PPC sits inside a wider stack, and the fact that one team runs all of it is a big part of why campaigns tend to perform better than when channels are handled by separate vendors. Here's the full breakdown:</p>
       <ul>
-        <li><a href="/ads"><strong>Paid Ads</strong></a> - Google and Meta (Facebook/Instagram) campaign management, built around one rule: if an ad can't justify its cost, it doesn't run. Includes landing pages built to match the ad, audience and creative testing, and monthly reports that show spend, return, and next steps in plain language.</li>
-        <li><a href="/seo"><strong>SEO & Local Visibility</strong></a> - Technical site structure fixes, keyword-targeted page optimization, Google Business Profile cleanup, and call/form tracking, so organic search brings in buyers instead of random traffic.</li>
-        <li><a href="/google-business"><strong>Google Business Profile Optimization</strong></a> - Getting your business into the local Map Pack, building trust through reviews, and turning that visibility into calls and visits, since your GBP listing is often the first thing a nearby customer sees.</li>
-        <li><a href="/social-media"><strong>Social Media & Brand Presence</strong></a> - Bio and profile cleanup, content pillars so you're not guessing what to post, and a focus on actions like clicks, replies, and DMs rather than vanity likes.</li>
+        <li><a href="/ppc-ads-agency-brampton"><strong>Paid Ads</strong></a> - Google and Meta (Facebook/Instagram) campaign management, built around one rule: if an ad can't justify its cost, it doesn't run. Includes landing pages built to match the ad, audience and creative testing, and monthly reports that show spend, return, and next steps in plain language.</li>
+        <li><a href="/seo-service-brampton"><strong>SEO & Local Visibility</strong></a> - Technical site structure fixes, keyword-targeted page optimization, Google Business Profile cleanup, and call/form tracking, so organic search brings in buyers instead of random traffic.</li>
+        <li><a href="/google-maps-seo-brampton"><strong>Google Business Profile Optimization</strong></a> - Getting your business into the local Map Pack, building trust through reviews, and turning that visibility into calls and visits, since your GBP listing is often the first thing a nearby customer sees.</li>
+        <li><a href="/social-media-marketing-agency-brampton"><strong>Social Media & Brand Presence</strong></a> - Bio and profile cleanup, content pillars so you're not guessing what to post, and a focus on actions like clicks, replies, and DMs rather than vanity likes.</li>
         <li><strong>Websites That Sell</strong> - Mobile-first site design and rebuilds focused on conversion: fast load times, clear next-step messaging, and built-in booking or form tracking, so every website visit is treated as an opportunity rather than a guess. <a href="/contact">Talk to the team about a website project</a> to see what a rebuild would involve.</li>
       </ul>
 
@@ -1775,7 +1775,7 @@ export const blogPosts: BlogPost[] = [
 
       <h2>Why Local Experience Still Matters for PPC in Brampton</h2>
 
-      <p>Brampton's audience skews young, multicultural, and mobile-first, and it's spread across distinct pockets — Bramalea, Mount Pleasant, Heart Lake, Springdale, and downtown all behave differently in search. A generic national campaign template tends to waste budget on searches that were never going to convert locally. Agencies that build geographic and neighbourhood-level targeting into the campaign structure from day one, rather than bolting it on later, typically get to a stable cost-per-lead faster. This is also where pairing PPC with <a href="/google-business">local SEO and Google Business Profile work</a> tends to pay off — paid and organic visibility reinforce each other in the Map Pack rather than splitting your budget across two disconnected efforts.</p>
+      <p>Brampton's audience skews young, multicultural, and mobile-first, and it's spread across distinct pockets — Bramalea, Mount Pleasant, Heart Lake, Springdale, and downtown all behave differently in search. A generic national campaign template tends to waste budget on searches that were never going to convert locally. Agencies that build geographic and neighbourhood-level targeting into the campaign structure from day one, rather than bolting it on later, typically get to a stable cost-per-lead faster. This is also where pairing PPC with <a href="/google-maps-seo-brampton">local SEO and Google Business Profile work</a> tends to pay off — paid and organic visibility reinforce each other in the Map Pack rather than splitting your budget across two disconnected efforts.</p>
 
       <h2>Final Thoughts</h2>
 

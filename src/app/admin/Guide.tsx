@@ -83,7 +83,7 @@ export function Guide() {
             <span className={code}>**important**</span> — bold text.
           </li>
           <li>
-            <span className={code}>[link text](/seo)</span> — a link.
+            <span className={code}>[link text](/seo-service-brampton)</span> — a link.
           </li>
         </ul>
       </div>
@@ -96,20 +96,20 @@ export function Guide() {
         </p>
         <ul className="space-y-3 text-sm text-slate-600">
           <li>
-            <span className={code}>[ads management services](https://www.cremsocial.com/ads)</span> — the normal Docs link. Pasting
-            the doc keeps it, and it becomes <span className={code}>/ads</span>.
+            <span className={code}>[ads management services](https://www.cremsocial.com/ppc-ads-agency-brampton)</span> — the normal Docs link. Pasting
+            the doc keeps it, and it becomes <span className={code}>/ppc-ads-agency-brampton</span>.
           </li>
           <li>
-            <span className={code}>[ads management services](/ads)</span> — the short version if you are typing it yourself.
+            <span className={code}>[ads management services](/ppc-ads-agency-brampton)</span> — the short version if you are typing it yourself.
           </li>
           <li>
-            <span className={code}>https://www.cremsocial.com/ads</span> — a bare URL on its own becomes a link too.
+            <span className={code}>https://www.cremsocial.com/ppc-ads-agency-brampton</span> — a bare URL on its own becomes a link too.
           </li>
         </ul>
         <p className="mt-4 text-sm text-slate-500">
           Pages you can link to: <span className={code}>/</span> <span className={code}>/services</span>{" "}
-          <span className={code}>/seo</span> <span className={code}>/ads</span> <span className={code}>/social-media</span>{" "}
-          <span className={code}>/google-business</span> <span className={code}>/shadow-operating</span>{" "}
+          <span className={code}>/seo-service-brampton</span> <span className={code}>/ppc-ads-agency-brampton</span> <span className={code}>/social-media-marketing-agency-brampton</span>{" "}
+          <span className={code}>/google-maps-seo-brampton</span> <span className={code}>/shadow-operating</span>{" "}
           <span className={code}>/about</span> <span className={code}>/contact</span> <span className={code}>/blog</span>.
           Links to other websites still work and open normally.
         </p>
