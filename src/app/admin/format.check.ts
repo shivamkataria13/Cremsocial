@@ -120,6 +120,24 @@ assert.strictEqual(
   '<img src="/blog/x/i2.webp" alt="Cremsocial office" loading="lazy">'
 );
 
+// a "Slug Suggestion" note is not the title, even styled as the biggest heading,
+// and a title styled one level down is still found
+const slugNote = parseDoc(
+  "## Top 10 Social Media Agencies\n\n**Meta Title:** Top 10 (2026)\n\n" +
+    "# **Slug Suggestion:** top-10-social-media\n\nIntro paragraph.\n\n## 1. First Agency\n\nBody."
+);
+assert.strictEqual(slugNote.title, "Top 10 Social Media Agencies");
+assert.strictEqual(slugNote.metaTitle, "Top 10 (2026)");
+assert.ok(!slugNote.body.includes("Slug Suggestion") && !slugNote.intro.includes("Slug"), "slug note dropped");
+assert.strictEqual(slugNote.intro, "Intro paragraph.");
+
+// Word's empty anchors vanish from the plain intro (blog card) as well as the HTML
+const emptyAnchor = parseDoc(
+  "# T\n\nGet their [](https://www.cremsocial.com/) [free audit](https://www.cremsocial.com/contact) today.\n\n## S\n\nBody."
+);
+assert.strictEqual(emptyAnchor.intro, "Get their free audit today.");
+assert.strictEqual(emptyAnchor.introHtml, 'Get their <a href="/contact">free audit</a> today.');
+
 // a section heading with a list under it
 assert.strictEqual(
   toHtml("## Focus on\n- Reviews\n- Citations"),

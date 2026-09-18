@@ -134,6 +134,8 @@ export interface ParsedDoc {
 
 const stripMarks = (s: string) =>
   unescape(s)
+    // Word's empty anchors carry no words — drop them, or "[](url)" shows on the blog card
+    .replace(/\[\s*\]\([^)]*\)\s*/g, "")
     .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
     .replace(/[*_`#]/g, "")
     .replace(/\s+/g, " ")
@@ -165,8 +167,8 @@ export function parseDoc(raw: string): ParsedDoc {
       else metaDescription = value;
       continue;
     }
-    // an SEO note for the writer, not part of the article
-    if (/^#*\s*\**\s*focus\s*keyword\s*\**\s*[:\-–]/i.test(trimmed)) continue;
+    // SEO notes for the writer, not part of the article
+    if (/^#*\s*\**\s*(focus\s*keyword|slug(\s*suggestion)?)\s*\**\s*[:\-–]/i.test(trimmed)) continue;
     // heading marker left behind when a meta line was split off it
     if (/^#+$/.test(trimmed)) continue;
 
@@ -177,11 +179,12 @@ export function parseDoc(raw: string): ParsedDoc {
     rest.push(line);
   }
 
-  // Pasted out of Word/Docs, so the headline lost its "#": the first line is it.
+  // Pasted out of Word/Docs, so the headline lost its "#" — or the writer styled
+  // it as a smaller heading: the first line is it.
   if (!title) {
     const first = rest.findIndex((l) => l.trim());
     const candidate = rest[first]?.trim() ?? "";
-    if (candidate && candidate.length <= 200 && !/[.,;:]$/.test(candidate) && !/^[-*<#]/.test(candidate)) {
+    if (candidate && candidate.length <= 200 && !/[.,;:]$/.test(candidate) && !/^[-*<]/.test(candidate)) {
       title = stripMarks(candidate);
       rest.splice(first, 1);
     }

@@ -5,6 +5,31 @@ All notable changes to the Cremsocial site. Newest first.
 Dates are the day the change was made. Blog entries list the post's own publish
 date where it differs.
 
+## 2026-09-18
+
+### Added
+
+- *Top 10 Professional Social Media Marketing Agencies in Brampton*
+  (`/blog/top-10-social-media-marketing-agencies-brampton`), from
+  `GBP Post & Blog Post - (14th Sept 2026 - 18th Sept 2026).docx`, using the
+  slug the doc suggested. 11 pictures, 10.2 MB → 596 KB as WebP.
+- The doc styled every heading one level lower than the other posts (title as
+  Heading 2, each agency as Heading 3), which would have rendered the agencies
+  as bold text rather than sections. Raised one level so the post matches the
+  other top-10 lists: one H1 and an H2 per agency.
+
+### Fixed
+
+- **Blog cards could show raw `[](https://…)` text.** Word leaves empty anchors
+  next to real links; they were stripped from the article but not from the plain
+  intro that the blog listing cards display. The 10 Sept PPC post had been
+  showing one on its card since it went live. Fixed at the source and both
+  posts regenerated — for the PPC post, the intro is the only line that changed.
+- A "Slug Suggestion" note styled as a heading is no longer mistaken for the
+  post's title, and a title styled as a smaller heading is still found.
+- Contact lines whose emoji sat inside bold text (`**📍Address**`) came out with
+  broken bold markers; they convert cleanly now.
+
 ## 2026-09-17
 
 ### SEO
